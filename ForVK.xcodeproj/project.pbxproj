@@ -12,6 +12,15 @@
 		EC28D88A2499105D0027AB6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC28D8882499105D0027AB6C /* Main.storyboard */; };
 		EC28D88C2499105E0027AB6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC28D88B2499105E0027AB6C /* Assets.xcassets */; };
 		EC28D88F2499105E0027AB6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC28D88D2499105E0027AB6C /* LaunchScreen.storyboard */; };
+		EC5A578F249EA1C900DB032E /* UserGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5A578E249EA1C900DB032E /* UserGroupsController.swift */; };
+		EC5A5791249EA21F00DB032E /* GroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5A5790249EA21F00DB032E /* GroupsCell.swift */; };
+		EC5A5793249EA4A600DB032E /* AllGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5A5792249EA4A600DB032E /* AllGroupController.swift */; };
+		ECEAFBE2249E7EE30080775A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAFBE1249E7EE30080775A /* User.swift */; };
+		ECEAFBE4249E85D30080775A /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAFBE3249E85D30080775A /* FriendsController.swift */; };
+		ECEAFBE6249E869E0080775A /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAFBE5249E869E0080775A /* FriendsCell.swift */; };
+		ECEAFBEB249E92800080775A /* PhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAFBEA249E92800080775A /* PhotosController.swift */; };
+		ECEAFBED249E92B00080775A /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAFBEC249E92B00080775A /* PhotosCell.swift */; };
+		ECEAFBEF249E9FF80080775A /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAFBEE249E9FF80080775A /* Group.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +31,15 @@
 		EC28D88B2499105E0027AB6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC28D88E2499105E0027AB6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC28D8902499105E0027AB6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC5A578E249EA1C900DB032E /* UserGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupsController.swift; sourceTree = "<group>"; };
+		EC5A5790249EA21F00DB032E /* GroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsCell.swift; sourceTree = "<group>"; };
+		EC5A5792249EA4A600DB032E /* AllGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupController.swift; sourceTree = "<group>"; };
+		ECEAFBE1249E7EE30080775A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		ECEAFBE3249E85D30080775A /* FriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
+		ECEAFBE5249E869E0080775A /* FriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
+		ECEAFBEA249E92800080775A /* PhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosController.swift; sourceTree = "<group>"; };
+		ECEAFBEC249E92B00080775A /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
+		ECEAFBEE249E9FF80080775A /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +72,10 @@
 		EC28D8812499105D0027AB6C /* ForVK */ = {
 			isa = PBXGroup;
 			children = (
+				ECEAFBF0249EA0FF0080775A /* Groups */,
+				ECEAFBE7249E92240080775A /* Photos */,
+				ECEAFBE0249E7B740080775A /* Friends */,
+				ECEAFBDD249E78FF0080775A /* Model */,
 				EC28D8822499105D0027AB6C /* AppDelegate.swift */,
 				EC28D8862499105D0027AB6C /* LoginFormController.swift */,
 				EC28D8882499105D0027AB6C /* Main.storyboard */,
@@ -62,6 +84,43 @@
 				EC28D8902499105E0027AB6C /* Info.plist */,
 			);
 			path = ForVK;
+			sourceTree = "<group>";
+		};
+		ECEAFBDD249E78FF0080775A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ECEAFBE1249E7EE30080775A /* User.swift */,
+				ECEAFBEE249E9FF80080775A /* Group.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ECEAFBE0249E7B740080775A /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				ECEAFBE3249E85D30080775A /* FriendsController.swift */,
+				ECEAFBE5249E869E0080775A /* FriendsCell.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		ECEAFBE7249E92240080775A /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				ECEAFBEA249E92800080775A /* PhotosController.swift */,
+				ECEAFBEC249E92B00080775A /* PhotosCell.swift */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		ECEAFBF0249EA0FF0080775A /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				EC5A578E249EA1C900DB032E /* UserGroupsController.swift */,
+				EC5A5790249EA21F00DB032E /* GroupsCell.swift */,
+				EC5A5792249EA4A600DB032E /* AllGroupController.swift */,
+			);
+			path = Groups;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +194,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECEAFBEB249E92800080775A /* PhotosController.swift in Sources */,
 				EC28D8872499105D0027AB6C /* LoginFormController.swift in Sources */,
+				ECEAFBE6249E869E0080775A /* FriendsCell.swift in Sources */,
+				EC5A5793249EA4A600DB032E /* AllGroupController.swift in Sources */,
+				ECEAFBEF249E9FF80080775A /* Group.swift in Sources */,
+				ECEAFBED249E92B00080775A /* PhotosCell.swift in Sources */,
+				ECEAFBE4249E85D30080775A /* FriendsController.swift in Sources */,
 				EC28D8832499105D0027AB6C /* AppDelegate.swift in Sources */,
+				ECEAFBE2249E7EE30080775A /* User.swift in Sources */,
+				EC5A5791249EA21F00DB032E /* GroupsCell.swift in Sources */,
+				EC5A578F249EA1C900DB032E /* UserGroupsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +349,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ForVK/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -298,6 +367,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ForVK/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

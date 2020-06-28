@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC23F5FF24A8A7A9000E1DDF /* likeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC23F5FE24A8A7A9000E1DDF /* likeControl.swift */; };
 		EC28D8832499105D0027AB6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC28D8822499105D0027AB6C /* AppDelegate.swift */; };
 		EC28D8872499105D0027AB6C /* LoginFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC28D8862499105D0027AB6C /* LoginFormController.swift */; };
 		EC28D88A2499105D0027AB6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC28D8882499105D0027AB6C /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC23F5FE24A8A7A9000E1DDF /* likeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = likeControl.swift; sourceTree = "<group>"; };
 		EC28D87F2499105D0027AB6C /* ForVK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForVK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC28D8822499105D0027AB6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC28D8862499105D0027AB6C /* LoginFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				EC4ED84B24A24C59003BE15A /* AvatarView.swift */,
+				EC23F5FE24A8A7A9000E1DDF /* likeControl.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				ECEAFBEB249E92800080775A /* PhotosController.swift in Sources */,
 				EC4ED84C24A24C59003BE15A /* AvatarView.swift in Sources */,
 				EC28D8872499105D0027AB6C /* LoginFormController.swift in Sources */,
+				EC23F5FF24A8A7A9000E1DDF /* likeControl.swift in Sources */,
 				ECEAFBE6249E869E0080775A /* FriendsCell.swift in Sources */,
 				EC5A5793249EA4A600DB032E /* AllGroupController.swift in Sources */,
 				ECEAFBEF249E9FF80080775A /* Group.swift in Sources */,

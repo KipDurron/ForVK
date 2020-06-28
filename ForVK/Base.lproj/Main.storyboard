@@ -243,25 +243,39 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="33V-5i-zgq">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="146" height="147"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="200" id="5hv-9D-kPC"/>
-                                                <constraint firstAttribute="height" constant="200" id="K5q-Xa-Lgi"/>
+                                                <constraint firstAttribute="width" constant="146" id="5hv-9D-kPC"/>
+                                                <constraint firstAttribute="height" constant="147" id="K5q-Xa-Lgi"/>
                                             </constraints>
                                         </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjm-NX-CqV" customClass="likeControl" customModule="ForVK" customModuleProvider="target">
+                                            <rect key="frame" x="88" y="133" width="50" height="20"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isLiked" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="countLikes">
+                                                    <integer key="value" value="110"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="33V-5i-zgq" firstAttribute="leading" secondItem="pbl-0C-50M" secondAttribute="leading" id="4sY-g2-OXN"/>
+                                        <constraint firstItem="Wjm-NX-CqV" firstAttribute="top" secondItem="pbl-0C-50M" secondAttribute="top" constant="133" id="5sn-FA-WAg"/>
                                         <constraint firstItem="33V-5i-zgq" firstAttribute="top" secondItem="pbl-0C-50M" secondAttribute="top" id="GbV-TJ-DL4"/>
-                                        <constraint firstAttribute="bottom" secondItem="33V-5i-zgq" secondAttribute="bottom" id="RkW-pt-ffv"/>
+                                        <constraint firstAttribute="bottom" secondItem="Wjm-NX-CqV" secondAttribute="bottom" constant="47" id="HZy-Nm-IWJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="33V-5i-zgq" secondAttribute="bottom" constant="53" id="RkW-pt-ffv"/>
                                         <constraint firstItem="33V-5i-zgq" firstAttribute="top" secondItem="pbl-0C-50M" secondAttribute="top" id="ZEo-K0-Zwi"/>
+                                        <constraint firstItem="Wjm-NX-CqV" firstAttribute="leading" secondItem="pbl-0C-50M" secondAttribute="leading" constant="88" id="avI-1E-OM8"/>
                                         <constraint firstItem="33V-5i-zgq" firstAttribute="leading" secondItem="pbl-0C-50M" secondAttribute="leading" id="eKS-Uf-WKq"/>
-                                        <constraint firstAttribute="trailing" secondItem="33V-5i-zgq" secondAttribute="trailing" id="m3n-4w-z5R"/>
-                                        <constraint firstAttribute="trailing" secondItem="33V-5i-zgq" secondAttribute="trailing" id="qFp-3h-0EU"/>
-                                        <constraint firstAttribute="bottom" secondItem="33V-5i-zgq" secondAttribute="bottom" id="xqU-4r-XpP"/>
+                                        <constraint firstAttribute="trailing" secondItem="33V-5i-zgq" secondAttribute="trailing" constant="54" id="m3n-4w-z5R"/>
+                                        <constraint firstAttribute="trailing" secondItem="33V-5i-zgq" secondAttribute="trailing" constant="54" id="qFp-3h-0EU"/>
+                                        <constraint firstAttribute="bottom" secondItem="33V-5i-zgq" secondAttribute="bottom" constant="53" id="xqU-4r-XpP"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
+                                    <outlet property="likeControl" destination="Wjm-NX-CqV" id="4Vv-rw-0VC"/>
                                     <outlet property="photo" destination="33V-5i-zgq" id="sCQ-Z0-S5W"/>
                                 </connections>
                             </collectionViewCell>

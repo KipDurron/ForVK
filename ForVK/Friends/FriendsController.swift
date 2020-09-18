@@ -8,14 +8,18 @@
 
 import UIKit
 
-class FriendsController: UITableViewController {
-    
-    var friends: [User] = []
+class FriendsController: UITableViewController, UISearchResultsUpdating{
 
+    var friends: [User] = []
+    var searchController: UISearchController!
+    var searchFriend: [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        searchController = UISearchController(searchResultsController: nil)
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -49,6 +53,25 @@ class FriendsController: UITableViewController {
                     }
         }
     }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filtrBySearch(textSearch: searchText)
+            tableView.reloadData()
+        }
+    }
+    
+    func filtrBySearch(textSearch: String) {
+        searchFriend = friends.filter({
+            (friend: User) -> Bool in
+            if friend.name.lowercased().range(of:textSearch.lowercased()) != nil {
+                return true
+            } else {
+                return false
+            }
+        })
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,13 +81,17 @@ class FriendsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return friends.count
+        if searchController.isActive {
+            return searchFriend.count
+        } else {
+            return friends.count
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCell", for: indexPath) as! FriendsCell
-        let currentFriend = self.friends[indexPath.row]
+        let currentFriend = (searchController.isActive) ? self.searchFriend[indexPath.row] : self.friends[indexPath.row]
         cell.avatarView.avatarImage = currentFriend.avatar
         cell.name?.text = currentFriend.name
         // Configure the cell...
@@ -73,13 +100,13 @@ class FriendsController: UITableViewController {
     }
     
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+    
 
     /*
     // Override to support editing the table view.

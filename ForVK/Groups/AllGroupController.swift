@@ -21,9 +21,9 @@ class AllGroupController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         let userGroup1 = Group()
-        let userGroup2 = Group(name: "Star Wars", avatar: UIImage(systemName: "star.fill"))
-        let userGroup3 = Group(name: "Swift", avatar: UIImage(systemName: "book.fill"))
-        let userGroup4 = Group(name: "Apple", avatar: UIImage(systemName: "paperplane"))
+        let userGroup2 = Group(name: "Star Wars", avatar: UIImage(systemName: "star.fill")!)
+        let userGroup3 = Group(name: "Swift", avatar: UIImage(systemName: "book.fill")!)
+        let userGroup4 = Group(name: "Apple", avatar: UIImage(systemName: "paperplane")!)
         self.allGroups.append(userGroup1)
         self.allGroups.append(userGroup2)
         self.allGroups.append(userGroup3)

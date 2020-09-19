@@ -8,22 +8,18 @@
 
 import UIKit
 
-class User {
+class User: UserLight{
 
-    var name: String
-    var avatar: UIImage
-    var photos: [UIImage]
+    var photos: [UIImage?]
     
-    init() {
-        self.name = "userName"
-        self.avatar = UIImage(systemName: "person")!
+    override init() {
         self.photos = []
+        super.init()
     }
     
-    init(name: String, avatar: UIImage, photos: [UIImage]) {
-        self.name = name
-        self.avatar = avatar
+    init(name: String, avatar: UIImage?, photos: [UIImage?]) {
         self.photos = photos
+        super.init(name: name, avatar: avatar)
     }
 
 }

@@ -25,16 +25,16 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        let friend1 = User(name: "Vasy", avatar: UIImage(systemName: "calendar")!,
-        photos: [UIImage(systemName: "calendar")!,
-                 UIImage(systemName: "calendar")!,
-                 UIImage(systemName: "trash")!,
-                 UIImage(systemName: "trash")!])
-        let friend2 = User(name: "Ilya", avatar: UIImage(systemName: "paperplane")!,
-                           photos: [UIImage(systemName: "pencil")!,
-                                    UIImage(systemName: "person")!,
-                                    UIImage(systemName: "trash")!,
-                                    UIImage(systemName: "paperplane")!])
+        let friend1 = User(name: "Vasy", avatar: UIImage(systemName: "calendar"),
+        photos: [UIImage(systemName: "calendar"),
+                 UIImage(systemName: "calendar"),
+                 UIImage(systemName: "trash"),
+                 UIImage(systemName: "trash")])
+        let friend2 = User(name: "Ilya", avatar: UIImage(systemName: "paperplane"),
+                           photos: [UIImage(systemName: "pencil"),
+                                    UIImage(systemName: "person"),
+                                    UIImage(systemName: "trash"),
+                                    UIImage(systemName: "paperplane")])
         let friend3 = User()
         friends.append(friend1)
         friends.append(friend2)

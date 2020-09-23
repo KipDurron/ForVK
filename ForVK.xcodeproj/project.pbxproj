@@ -13,8 +13,8 @@
 		EC28D88A2499105D0027AB6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC28D8882499105D0027AB6C /* Main.storyboard */; };
 		EC28D88C2499105E0027AB6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC28D88B2499105E0027AB6C /* Assets.xcassets */; };
 		EC28D88F2499105E0027AB6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC28D88D2499105E0027AB6C /* LaunchScreen.storyboard */; };
-		EC4D14A824CEF38B005081A1 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4D14A724CEF38B005081A1 /* Session.swift */; };
 		EC4ED84C24A24C59003BE15A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4ED84B24A24C59003BE15A /* AvatarView.swift */; };
+		EC56272F251BCA7F00E87F24 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56272E251BCA7F00E87F24 /* Session.swift */; };
 		EC5A578F249EA1C900DB032E /* UserGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5A578E249EA1C900DB032E /* UserGroupsController.swift */; };
 		EC5A5791249EA21F00DB032E /* GroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5A5790249EA21F00DB032E /* GroupsCell.swift */; };
 		EC5A5793249EA4A600DB032E /* AllGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5A5792249EA4A600DB032E /* AllGroupController.swift */; };
@@ -41,8 +41,8 @@
 		EC28D88B2499105E0027AB6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC28D88E2499105E0027AB6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC28D8902499105E0027AB6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EC4D14A724CEF38B005081A1 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		EC4ED84B24A24C59003BE15A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		EC56272E251BCA7F00E87F24 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		EC5A578E249EA1C900DB032E /* UserGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupsController.swift; sourceTree = "<group>"; };
 		EC5A5790249EA21F00DB032E /* GroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsCell.swift; sourceTree = "<group>"; };
 		EC5A5792249EA4A600DB032E /* AllGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupController.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		EC4D14A624CEF359005081A1 /* Session */ = {
 			isa = PBXGroup;
 			children = (
-				EC4D14A724CEF38B005081A1 /* Session.swift */,
+				EC56272E251BCA7F00E87F24 /* Session.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -253,7 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC4D14A824CEF38B005081A1 /* Session.swift in Sources */,
+				EC56272F251BCA7F00E87F24 /* Session.swift in Sources */,
 				ECEAFBEB249E92800080775A /* PhotosController.swift in Sources */,
 				EC4ED84C24A24C59003BE15A /* AvatarView.swift in Sources */,
 				ECE49ED72516136C0023FB2F /* UserLight.swift in Sources */,

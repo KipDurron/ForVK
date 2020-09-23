@@ -6,6 +6,7 @@
 //  Copyright © 2020 Илья Ишунин. All rights reserved.
 //
 
+
 class Session {
     var token: String = ""
     var userId: Int = 0

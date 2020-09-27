@@ -16,5 +16,9 @@ import Foundation
 enum VKWebSet: String {
     case scheme = "https"
     case host = "api.vk.com"
-    case methodAllFriend = "/method/friends.get"
+    case methodGetAllFriend = "/method/friends.get"
+    case methodGetPhotoUser = "/method/photos.get"
+    case methodGetGroupUser = "/method/groups.get"
+    case methodSearchGroup = "/method/groups.search"
+    
 }

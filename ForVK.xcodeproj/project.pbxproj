@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		EC28D88A2499105D0027AB6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC28D8882499105D0027AB6C /* Main.storyboard */; };
 		EC28D88C2499105E0027AB6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC28D88B2499105E0027AB6C /* Assets.xcassets */; };
 		EC28D88F2499105E0027AB6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC28D88D2499105E0027AB6C /* LaunchScreen.storyboard */; };
+		EC36FB452520AD27003397CD /* ExLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC36FB442520AD27003397CD /* ExLoginViewController.swift */; };
+		EC36FB4A2520B63B003397CD /* VKWebSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC36FB492520B63B003397CD /* VKWebSet.swift */; };
 		EC4ED84C24A24C59003BE15A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4ED84B24A24C59003BE15A /* AvatarView.swift */; };
 		EC56272F251BCA7F00E87F24 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56272E251BCA7F00E87F24 /* Session.swift */; };
 		EC5A578F249EA1C900DB032E /* UserGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5A578E249EA1C900DB032E /* UserGroupsController.swift */; };
@@ -45,6 +47,8 @@
 		EC28D88B2499105E0027AB6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC28D88E2499105E0027AB6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC28D8902499105E0027AB6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC36FB442520AD27003397CD /* ExLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExLoginViewController.swift; sourceTree = "<group>"; };
+		EC36FB492520B63B003397CD /* VKWebSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKWebSet.swift; sourceTree = "<group>"; };
 		EC4ED84B24A24C59003BE15A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		EC56272E251BCA7F00E87F24 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		EC5A578E249EA1C900DB032E /* UserGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupsController.swift; sourceTree = "<group>"; };
@@ -82,7 +86,6 @@
 				DDC23DA8AEA73C00F3B47992 /* Pods-ForVK.debug.xcconfig */,
 				1D12C431EE7845A9249090A6 /* Pods-ForVK.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -115,6 +118,8 @@
 		EC28D8812499105D0027AB6C /* ForVK */ = {
 			isa = PBXGroup;
 			children = (
+				EC36FB482520B619003397CD /* Enum */,
+				EC36FB432520AD0B003397CD /* Extention */,
 				ECE49ED8251624680023FB2F /* News */,
 				ECE49EC9251600BE0023FB2F /* Helper */,
 				EC4D14A624CEF359005081A1 /* Session */,
@@ -131,6 +136,22 @@
 				EC28D8902499105E0027AB6C /* Info.plist */,
 			);
 			path = ForVK;
+			sourceTree = "<group>";
+		};
+		EC36FB432520AD0B003397CD /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				EC36FB442520AD27003397CD /* ExLoginViewController.swift */,
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
+		EC36FB482520B619003397CD /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				EC36FB492520B63B003397CD /* VKWebSet.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		EC4D14A624CEF359005081A1 /* Session */ = {
@@ -326,6 +347,7 @@
 				ECEAFBEB249E92800080775A /* PhotosController.swift in Sources */,
 				EC4ED84C24A24C59003BE15A /* AvatarView.swift in Sources */,
 				ECE49ED72516136C0023FB2F /* UserLight.swift in Sources */,
+				EC36FB4A2520B63B003397CD /* VKWebSet.swift in Sources */,
 				EC28D8872499105D0027AB6C /* LoginFormController.swift in Sources */,
 				EC23F5FF24A8A7A9000E1DDF /* likeControl.swift in Sources */,
 				ECEAFBE6249E869E0080775A /* FriendsCell.swift in Sources */,
@@ -336,6 +358,7 @@
 				ECEAFBE4249E85D30080775A /* FriendsController.swift in Sources */,
 				ECE49ED5251607A30023FB2F /* Lorem.swift in Sources */,
 				EC28D8832499105D0027AB6C /* AppDelegate.swift in Sources */,
+				EC36FB452520AD27003397CD /* ExLoginViewController.swift in Sources */,
 				ECE49EDC251624C50023FB2F /* NewsCell.swift in Sources */,
 				ECE49ED3251607390023FB2F /* LoremExtension.swift in Sources */,
 				ECEAFBE2249E7EE30080775A /* User.swift in Sources */,

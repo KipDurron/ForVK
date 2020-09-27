@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import WebKit
 
 class LoginFormController: UIViewController {
 
+    @IBOutlet weak var webview: WKWebView! {
+        didSet{
+            webview.navigationDelegate = self
+        }
+    }
+    
     @IBOutlet weak var scrollView: UIScrollView!
     
 
@@ -60,6 +67,27 @@ class LoginFormController: UIViewController {
         self.scrollView?.endEditing(true)
     }
 
+    func startWebView() {
+        var urlComponents = URLComponents()
+                urlComponents.scheme = "https"
+                urlComponents.host = "oauth.vk.com"
+                urlComponents.path = "/authorize"
+                urlComponents.queryItems = [
+                    URLQueryItem(name: "client_id", value: ""),
+                    URLQueryItem(name: "display", value: "mobile"),
+                    URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
+                    URLQueryItem(name: "scope", value: "262150"),
+                    URLQueryItem(name: "response_type", value: "token"),
+                    URLQueryItem(name: "v", value: "5.68")
+                ]
+                
+        let request = URLRequest(url: urlComponents.url!)
+        
+        webview.load(request)
+        
+        
+       
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +99,9 @@ class LoginFormController: UIViewController {
         self.scrollView?.addGestureRecognizer(hideKeyboardGesture)
         self.loginInput.text = "admin"
         self.passwordInput.text = "admin"
+        
+        startWebView()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,3 +131,5 @@ class LoginFormController: UIViewController {
     */
 
 }
+
+

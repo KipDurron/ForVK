@@ -73,7 +73,7 @@ class LoginFormController: UIViewController {
                 urlComponents.host = "oauth.vk.com"
                 urlComponents.path = "/authorize"
                 urlComponents.queryItems = [
-                    URLQueryItem(name: "client_id", value: ""),
+                    URLQueryItem(name: "client_id", value: AuthSetting.clientId.rawValue),
                     URLQueryItem(name: "display", value: "mobile"),
                     URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
                     URLQueryItem(name: "scope", value: "262150"),

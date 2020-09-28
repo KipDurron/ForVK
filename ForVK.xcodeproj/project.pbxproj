@@ -128,7 +128,6 @@
 		EC28D8812499105D0027AB6C /* ForVK */ = {
 			isa = PBXGroup;
 			children = (
-				ECBA00E925220FFA00F24F3A /* Photo */,
 				ECBA00DF2522077400F24F3A /* Login */,
 				EC36FB482520B619003397CD /* Enum */,
 				EC36FB432520AD0B003397CD /* Extention */,
@@ -192,14 +191,6 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		ECBA00E925220FFA00F24F3A /* Photo */ = {
-			isa = PBXGroup;
-			children = (
-				ECBA00EA2522100900F24F3A /* PhotoService.swift */,
-			);
-			path = Photo;
-			sourceTree = "<group>";
-		};
 		ECE49EC9251600BE0023FB2F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +233,7 @@
 		ECEAFBE7249E92240080775A /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				ECBA00EA2522100900F24F3A /* PhotoService.swift */,
 				ECEAFBEA249E92800080775A /* PhotosController.swift */,
 				ECEAFBEC249E92B00080775A /* PhotosCell.swift */,
 			);

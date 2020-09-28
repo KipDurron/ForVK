@@ -32,79 +32,11 @@ extension LoginFormController: WKNavigationDelegate {
             session.token = params["access_token"]!
             session.userId = Int(params["user_id"]!)!
             
-            getAllFriend(idUser: session.userId)
-            getPhotoUser(idUser: session.userId)
-            getGroupUser(idUser: session.userId)
-            searchGroup(text: "Star Wars")
+            FriendService().getAllFriend(idUser: session.userId)
+            PhotoService().getPhotoUser(idUser: session.userId)
+            GroupService().getGroupUser(idUser: session.userId)
+            GroupService().searchGroup(text: "Star Wars")
             decisionHandler(.cancel)
     }
     
-    func getAllFriend(idUser: Int) {
-        var urlConstructor = URLComponents()
-        urlConstructor.scheme = VKWebSet.scheme.rawValue
-        urlConstructor.host = VKWebSet.host.rawValue
-        urlConstructor.path = VKWebSet.methodGetAllFriend.rawValue
-        urlConstructor.queryItems = [
-            URLQueryItem(name: "access_token", value: Session.instance.token),
-                    URLQueryItem(name: "v", value: "5.124"),
-                    URLQueryItem(name: "fields", value: "city,domain"),
-                    URLQueryItem(name: "user_id", value: String(idUser)),
-                ]
-        
-        AF.request(urlConstructor.url!).response { response in
-            debugPrint(response)
-        }
-    }
-    
-    func getPhotoUser(idUser: Int) {
-        
-        var urlConstructor = URLComponents()
-        urlConstructor.scheme = VKWebSet.scheme.rawValue
-        urlConstructor.host = VKWebSet.host.rawValue
-        urlConstructor.path = VKWebSet.methodGetPhotoUser.rawValue
-        urlConstructor.queryItems = [
-                    URLQueryItem(name: "access_token", value: Session.instance.token),
-                    URLQueryItem(name: "v", value: "5.124"),
-                    URLQueryItem(name: "album_id", value: "saved"),
-                    URLQueryItem(name: "owner_id", value: String(idUser))
-                ]
-        
-        AF.request(urlConstructor.url!).response { response in
-            debugPrint(response)
-        }
-    }
-    
-    func getGroupUser(idUser: Int) {
-        var urlConstructor = URLComponents()
-        urlConstructor.scheme = VKWebSet.scheme.rawValue
-        urlConstructor.host = VKWebSet.host.rawValue
-        urlConstructor.path = VKWebSet.methodGetGroupUser.rawValue
-        urlConstructor.queryItems = [
-                    URLQueryItem(name: "access_token", value: Session.instance.token),
-                    URLQueryItem(name: "v", value: "5.124"),
-                    URLQueryItem(name: "extended", value: "1"),
-                    URLQueryItem(name: "user_id", value: String(idUser))
-                ]
-        
-        AF.request(urlConstructor.url!).response { response in
-            debugPrint(response)
-        }
-    }
-    
-    func searchGroup(text: String) {
-        var urlConstructor = URLComponents()
-        urlConstructor.scheme = VKWebSet.scheme.rawValue
-        urlConstructor.host = VKWebSet.host.rawValue
-        urlConstructor.path = VKWebSet.methodSearchGroup.rawValue
-        urlConstructor.queryItems = [
-                    URLQueryItem(name: "access_token", value: Session.instance.token),
-                    URLQueryItem(name: "v", value: "5.124"),
-                    URLQueryItem(name: "q", value: text),
-                    URLQueryItem(name: "type", value: "group"),
-                ]
-        
-        AF.request(urlConstructor.url!).response { response in
-            debugPrint(response)
-        }
-    }
 }

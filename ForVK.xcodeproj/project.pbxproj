@@ -22,6 +22,9 @@
 		EC5A5793249EA4A600DB032E /* AllGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5A5792249EA4A600DB032E /* AllGroupController.swift */; };
 		EC75C1C22520CB4F00E59611 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC75C1C12520CB4F00E59611 /* Setting.swift */; };
 		ECBA00E22522080100F24F3A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA00E12522080100F24F3A /* LoginService.swift */; };
+		ECBA00E625220EBE00F24F3A /* FriendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA00E525220EBE00F24F3A /* FriendService.swift */; };
+		ECBA00EB2522100900F24F3A /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA00EA2522100900F24F3A /* PhotoService.swift */; };
+		ECBA00EF252210C400F24F3A /* GroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA00EE252210C400F24F3A /* GroupService.swift */; };
 		ECE49ED1251603B40023FB2F /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE49ED0251603B40023FB2F /* News.swift */; };
 		ECE49ED3251607390023FB2F /* LoremExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE49ED2251607390023FB2F /* LoremExtension.swift */; };
 		ECE49ED5251607A30023FB2F /* Lorem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE49ED4251607A30023FB2F /* Lorem.swift */; };
@@ -58,6 +61,9 @@
 		EC5A5792249EA4A600DB032E /* AllGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupController.swift; sourceTree = "<group>"; };
 		EC75C1C12520CB4F00E59611 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		ECBA00E12522080100F24F3A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		ECBA00E525220EBE00F24F3A /* FriendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendService.swift; sourceTree = "<group>"; };
+		ECBA00EA2522100900F24F3A /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
+		ECBA00EE252210C400F24F3A /* GroupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupService.swift; sourceTree = "<group>"; };
 		ECE49ED0251603B40023FB2F /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		ECE49ED2251607390023FB2F /* LoremExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremExtension.swift; sourceTree = "<group>"; };
 		ECE49ED4251607A30023FB2F /* Lorem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lorem.swift; sourceTree = "<group>"; };
@@ -122,6 +128,7 @@
 		EC28D8812499105D0027AB6C /* ForVK */ = {
 			isa = PBXGroup;
 			children = (
+				ECBA00E925220FFA00F24F3A /* Photo */,
 				ECBA00DF2522077400F24F3A /* Login */,
 				EC36FB482520B619003397CD /* Enum */,
 				EC36FB432520AD0B003397CD /* Extention */,
@@ -185,6 +192,14 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		ECBA00E925220FFA00F24F3A /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				ECBA00EA2522100900F24F3A /* PhotoService.swift */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
 		ECE49EC9251600BE0023FB2F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +234,7 @@
 			children = (
 				ECEAFBE3249E85D30080775A /* FriendsController.swift */,
 				ECEAFBE5249E869E0080775A /* FriendsCell.swift */,
+				ECBA00E525220EBE00F24F3A /* FriendService.swift */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -238,6 +254,7 @@
 				EC5A578E249EA1C900DB032E /* UserGroupsController.swift */,
 				EC5A5790249EA21F00DB032E /* GroupsCell.swift */,
 				EC5A5792249EA4A600DB032E /* AllGroupController.swift */,
+				ECBA00EE252210C400F24F3A /* GroupService.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -359,12 +376,15 @@
 			files = (
 				EC56272F251BCA7F00E87F24 /* Session.swift in Sources */,
 				ECEAFBEB249E92800080775A /* PhotosController.swift in Sources */,
+				ECBA00E625220EBE00F24F3A /* FriendService.swift in Sources */,
 				EC4ED84C24A24C59003BE15A /* AvatarView.swift in Sources */,
 				ECE49ED72516136C0023FB2F /* UserLight.swift in Sources */,
 				EC36FB4A2520B63B003397CD /* VKWebSet.swift in Sources */,
+				ECBA00EB2522100900F24F3A /* PhotoService.swift in Sources */,
 				EC28D8872499105D0027AB6C /* LoginFormController.swift in Sources */,
 				EC75C1C22520CB4F00E59611 /* Setting.swift in Sources */,
 				EC23F5FF24A8A7A9000E1DDF /* likeControl.swift in Sources */,
+				ECBA00EF252210C400F24F3A /* GroupService.swift in Sources */,
 				ECEAFBE6249E869E0080775A /* FriendsCell.swift in Sources */,
 				ECE49EDA251624A50023FB2F /* NewsViewController.swift in Sources */,
 				EC5A5793249EA4A600DB032E /* AllGroupController.swift in Sources */,

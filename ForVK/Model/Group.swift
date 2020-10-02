@@ -10,17 +10,26 @@ import UIKit
 
 class Group {
 
+    var id: Int
     var name: String
     var avatarUrl: String?
     
     init() {
         self.name = "groupName"
+        self.id = 0
         
     }
     
-    init(name: String, avatarUrl: String) {
+    init(name: String, avatarUrl: String, id: Int) {
         self.name = name
         self.avatarUrl = avatarUrl
+        self.id = id
+    }
+    
+    init(jsonDict: [String: Any]) {
+        self.name = jsonDict[VKWebSet.name.rawValue] as? String ?? "groupName"
+        self.avatarUrl = jsonDict[VKWebSet.avatarPhoto200.rawValue] as? String
+        self.id = jsonDict[VKWebSet.id.rawValue] as? Int ?? 0
     }
 
 }

@@ -24,5 +24,5 @@ enum VKWebSet: String {
     case lastName = "last_name"
     case avatarPhoto200 = "photo_200"
     case id = "id"
-    
+    case name = "name"
 }

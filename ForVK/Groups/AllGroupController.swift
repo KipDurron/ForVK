@@ -20,14 +20,14 @@ class AllGroupController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        let userGroup1 = Group()
-        let userGroup2 = Group(name: "Star Wars", avatar: UIImage(systemName: "star.fill")!)
-        let userGroup3 = Group(name: "Swift", avatar: UIImage(systemName: "book.fill")!)
-        let userGroup4 = Group(name: "Apple", avatar: UIImage(systemName: "paperplane")!)
-        self.allGroups.append(userGroup1)
-        self.allGroups.append(userGroup2)
-        self.allGroups.append(userGroup3)
-        self.allGroups.append(userGroup4)
+//        let userGroup1 = Group()
+//        let userGroup2 = Group(name: "Star Wars", avatar: UIImage(systemName: "star.fill")!)
+//        let userGroup3 = Group(name: "Swift", avatar: UIImage(systemName: "book.fill")!)
+//        let userGroup4 = Group(name: "Apple", avatar: UIImage(systemName: "paperplane")!)
+//        self.allGroups.append(userGroup1)
+//        self.allGroups.append(userGroup2)
+//        self.allGroups.append(userGroup3)
+//        self.allGroups.append(userGroup4)
     }
 
     // MARK: - Table view data source
@@ -47,7 +47,7 @@ class AllGroupController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupsCell", for: indexPath) as! GroupsCell
         let currentGroup = self.allGroups[indexPath.row]
         cell.name.text = currentGroup.name
-        cell.avatar.image = currentGroup.avatar
+//        cell.avatar.image = currentGroup.avatar
 
         // Configure the cell...
 

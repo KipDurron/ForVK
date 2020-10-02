@@ -10,7 +10,7 @@ import Alamofire
 
 class GroupService {
     
-    func getGroupUser(idUser: Int) {
+    func getGroupUser(idUser: Int, completion: @escaping ([Group]) -> Void) {
         var urlConstructor = URLComponents()
         urlConstructor.scheme = VKWebSet.scheme.rawValue
         urlConstructor.host = VKWebSet.host.rawValue
@@ -22,9 +22,12 @@ class GroupService {
                     URLQueryItem(name: "user_id", value: String(idUser))
                 ]
         
-        AF.request(urlConstructor.url!).response { response in
-            debugPrint(response)
+        AF.request(urlConstructor.url!).responseJSON { response in
+                guard let data = response.value else { return }
+                let items = VKParsingHelper.getItems(data: data)
+                completion(self.parsingAllGroups(items: items))
         }
+        
     }
     
     func searchGroup(text: String) {
@@ -42,5 +45,13 @@ class GroupService {
         AF.request(urlConstructor.url!).response { response in
             debugPrint(response)
         }
+    }
+    
+    func parsingAllGroups(items: [[String: Any]]) -> [Group]{
+        var groupArr: [Group] = []
+        items.forEach({ group in
+            groupArr.append(Group(jsonDict: group))
+        })
+        return groupArr
     }
 }

@@ -11,10 +11,14 @@ import UIKit
 class UserGroupsController: UITableViewController {
     
     var userGroups: [Group] = []
+    var groupService = GroupService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        groupService.getGroupUser(idUser: Session.instance.userId){userGroups in
+            self.userGroups = userGroups
+            self.tableView.reloadData()
+        }
 
         
     }
@@ -58,7 +62,10 @@ class UserGroupsController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupsCell", for: indexPath) as! GroupsCell
         let currentGroup = self.userGroups[indexPath.row]
         cell.name.text = currentGroup.name
-//        cell.avatar.image = currentGroup.avatar
+        UIImage.load(from: currentGroup.avatarUrl) {image in
+            cell.avatar.image = image
+        }
+        
 
         // Configure the cell...
 

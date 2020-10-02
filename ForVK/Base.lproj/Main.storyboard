@@ -66,7 +66,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <state key="normal" title="Войти"/>
                                                         <connections>
-                                                            <segue destination="Joh-xA-5H4" kind="presentation" modalPresentationStyle="fullScreen" id="PSW-ab-5kj"/>
+                                                            <segue destination="Joh-xA-5H4" kind="presentation" identifier="successLogin" modalPresentationStyle="fullScreen" id="PSW-ab-5kj"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

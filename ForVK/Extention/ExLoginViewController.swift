@@ -32,11 +32,9 @@ extension LoginFormController: WKNavigationDelegate {
             session.token = params["access_token"]!
             session.userId = Int(params["user_id"]!)!
             
-            FriendService().getAllFriend(idUser: session.userId)
-            PhotoService().getPhotoUser(idUser: session.userId)
-            GroupService().getGroupUser(idUser: session.userId)
-            GroupService().searchGroup(text: "Star Wars")
             decisionHandler(.cancel)
+            performSegue(withIdentifier: "successLogin", sender: self)
+
     }
     
 }

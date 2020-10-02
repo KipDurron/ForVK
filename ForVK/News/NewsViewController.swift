@@ -20,7 +20,7 @@ class NewsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        news = (1...5).map { _ in News.getRandom() }
+//        news = (1...5).map { _ in News.getRandom() }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

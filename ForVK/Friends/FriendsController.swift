@@ -10,9 +10,11 @@ import UIKit
 
 class FriendsController: UITableViewController, UISearchResultsUpdating{
 
-    var friends: [User] = []
+    var allFriend: [User] = []
     var searchController: UISearchController!
     var searchFriend: [User] = []
+    var friendService = FriendService()
+    var photoService = PhotoService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,25 +22,11 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        let friend1 = User(name: "Vasy", avatar: UIImage(systemName: "calendar"),
-        photos: [UIImage(systemName: "calendar"),
-                 UIImage(systemName: "calendar"),
-                 UIImage(systemName: "trash"),
-                 UIImage(systemName: "trash")])
-        let friend2 = User(name: "Ilya", avatar: UIImage(systemName: "paperplane"),
-                           photos: [UIImage(systemName: "pencil"),
-                                    UIImage(systemName: "person"),
-                                    UIImage(systemName: "trash"),
-                                    UIImage(systemName: "paperplane")])
-        let friend3 = User()
-        friends.append(friend1)
-        friends.append(friend2)
-        friends.append(friend3)
+        friendService.loadAllFriendData(idUser: Session.instance.userId) { allFriend in
+            
+            self.allFriend = allFriend
+            self.tableView.reloadData()
+        }
 
     }
 
@@ -49,7 +37,10 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
             let photosController = segue.destination as? PhotosController
             // Получаем индекс выделенной ячейки
                 if let indexPath = self.tableView.indexPathForSelectedRow {
-                    photosController?.photos = friends[indexPath.row].photos
+                    photoService.getAllphotoUser(idUser: self.allFriend[indexPath.row].id) { allPhoto in
+                        photosController?.photos = allPhoto
+                        photosController?.collectionView.reloadData()
+                        }
                     }
         }
     }
@@ -62,7 +53,7 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
     }
     
     func filtrBySearch(textSearch: String) {
-        searchFriend = friends.filter({
+        searchFriend = allFriend.filter({
             (friend: User) -> Bool in
             if friend.name.lowercased().range(of:textSearch.lowercased()) != nil {
                 return true
@@ -84,15 +75,18 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
         if searchController.isActive {
             return searchFriend.count
         } else {
-            return friends.count
+            return allFriend.count
         }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCell", for: indexPath) as! FriendsCell
-        let currentFriend = (searchController.isActive) ? self.searchFriend[indexPath.row] : self.friends[indexPath.row]
-        cell.avatarView.avatarImage = currentFriend.avatar
+        let currentFriend = (searchController.isActive) ? self.searchFriend[indexPath.row] : self.allFriend[indexPath.row]
+        UIImage.load(from: currentFriend.avatarUrl) {image in
+            cell.avatarView.avatarImage = image
+        }
+        
         cell.name?.text = currentFriend.name
         // Configure the cell...
 

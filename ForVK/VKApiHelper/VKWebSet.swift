@@ -17,8 +17,12 @@ enum VKWebSet: String {
     case scheme = "https"
     case host = "api.vk.com"
     case methodGetAllFriend = "/method/friends.get"
-    case methodGetPhotoUser = "/method/photos.get"
+    case methodGetPhotoUser = "/method/photos.getAll"
     case methodGetGroupUser = "/method/groups.get"
     case methodSearchGroup = "/method/groups.search"
+    case firstName = "first_name"
+    case lastName = "last_name"
+    case avatarPhoto200 = "photo_200"
+    case id = "id"
     
 }

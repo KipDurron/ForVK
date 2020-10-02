@@ -1,25 +1,36 @@
 //
-//  User.swift
+//  UserLight.swift
 //  ForVK
 //
-//  Created by Илья Кадыров on 20.06.2020.
+//  Created by Илья Кадыров on 19.09.2020.
 //  Copyright © 2020 Илья Ишунин. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class User: UserLight{
+class User{
 
-    var photos: [UIImage?]
+    var name: String
+    var avatarUrl: String?
+    var id: Int = 0
+
     
-    override init() {
-        self.photos = []
-        super.init()
+    init() {
+        self.name = "firstName lastName"
     }
     
-    init(name: String, avatar: UIImage?, photos: [UIImage?]) {
-        self.photos = photos
-        super.init(name: name, avatar: avatar)
+    init(name: String, avatarUrl: String?) {
+        self.name = name
+        self.avatarUrl = avatarUrl
+    }
+    
+    init(jsonDict: [String: Any]) {
+        let firstName = jsonDict[VKWebSet.firstName.rawValue] as? String
+        let lastName = jsonDict[VKWebSet.lastName.rawValue] as? String
+        self.name = (firstName ?? "firstName") + " " + (lastName ?? "lastName")
+        self.avatarUrl = jsonDict[VKWebSet.avatarPhoto200.rawValue] as? String
+        self.id = jsonDict[VKWebSet.id.rawValue] as? Int ?? 0
     }
 
 }

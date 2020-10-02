@@ -11,16 +11,16 @@ import UIKit
 class Group {
 
     var name: String
-    var avatar: UIImage
+    var avatarUrl: String?
     
     init() {
         self.name = "groupName"
-        self.avatar = UIImage(systemName: "person.3")!
+        
     }
     
-    init(name: String, avatar: UIImage) {
+    init(name: String, avatarUrl: String) {
         self.name = name
-        self.avatar = avatar
+        self.avatarUrl = avatarUrl
     }
 
 }

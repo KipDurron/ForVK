@@ -12,7 +12,7 @@ import UIKit
 
 class PhotosController: UICollectionViewController {
     
-    var photos: [UIImage?] = []
+    var photos: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +51,10 @@ class PhotosController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotosCell", for: indexPath) as! PhotosCell
-    
-        cell.photo.image = self.photos[indexPath.row]
+        UIImage.load(from: self.photos[indexPath.row]) {image in
+            cell.photo.image = image
+        }
+//        cell.photo.image = self.photos[indexPath.row]
     
         return cell
     }

@@ -9,7 +9,7 @@ import Alamofire
 
 class PhotoService {
     
-    func getPhotoUser(idUser: Int) {
+    func getAllphotoUser(idUser: Int, completion: @escaping ([String]) -> Void) {
         
         var urlConstructor = URLComponents()
         urlConstructor.scheme = VKWebSet.scheme.rawValue
@@ -22,8 +22,28 @@ class PhotoService {
                     URLQueryItem(name: "owner_id", value: String(idUser))
                 ]
         
-        AF.request(urlConstructor.url!).response { response in
-            debugPrint(response)
+        AF.request(urlConstructor.url!).responseJSON { response in
+            guard let data = response.value else { return }
+            let items = VKParsingHelper.getItems(data: data)
+            completion(self.parsingPhotosUser(items: items))
         }
     }
+    
+    func parsingPhotosUser(items: [[String: Any]]) -> [String] {
+        
+        var photoUrlArr: [String] = []
+        items.forEach({ item in
+            let sizes = item["sizes"] as! [[String: Any]]
+            sizes.forEach({ size in
+                let urlStr = size["url"] as? String
+                if urlStr != nil {
+                    photoUrlArr.append(urlStr!)
+                }
+               
+            })
+            
+        })
+        return photoUrlArr
+    }
+    
 }

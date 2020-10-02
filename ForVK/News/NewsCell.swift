@@ -24,12 +24,12 @@ class NewsCell: UITableViewCell {
     @IBOutlet weak var img: UIImageView!
     
     func configure(item: News, dateFormatter: DateFormatter) {
-        avatarAuthor.image = item.author.avatar
-        nameAuthor.text = item.author.name
-        date.text = dateFormatter.string(from: item.date)
-        textNews.text = item.text
-        textNews.numberOfLines = 0
-        img.image = item.img
+//        avatarAuthor.image = item.author.avatar
+//        nameAuthor.text = item.author.name
+//        date.text = dateFormatter.string(from: item.date)
+//        textNews.text = item.text
+//        textNews.numberOfLines = 0
+//        img.image = item.img
     }
     
     override func awakeFromNib() {

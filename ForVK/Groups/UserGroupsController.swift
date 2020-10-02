@@ -15,13 +15,8 @@ class UserGroupsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        let userGroup1 = Group()
-        self.userGroups.append(userGroup1)
+        
     }
     
     @IBAction func addGroup(segue: UIStoryboardSegue) {
@@ -63,7 +58,7 @@ class UserGroupsController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupsCell", for: indexPath) as! GroupsCell
         let currentGroup = self.userGroups[indexPath.row]
         cell.name.text = currentGroup.name
-        cell.avatar.image = currentGroup.avatar
+//        cell.avatar.image = currentGroup.avatar
 
         // Configure the cell...
 

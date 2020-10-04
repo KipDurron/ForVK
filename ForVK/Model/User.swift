@@ -13,7 +13,7 @@ class User{
 
     var name: String
     var avatarUrl: String?
-    var id: Int = 0
+    var id: String = "0"
 
     
     init() {
@@ -30,7 +30,7 @@ class User{
         let lastName = jsonDict[VKWebSet.lastName.rawValue] as? String
         self.name = (firstName ?? "firstName") + " " + (lastName ?? "lastName")
         self.avatarUrl = jsonDict[VKWebSet.avatarPhoto200.rawValue] as? String
-        self.id = jsonDict[VKWebSet.id.rawValue] as? Int ?? 0
+        self.id = String(jsonDict[VKWebSet.id.rawValue] as? Int ?? 0)
     }
 
 }

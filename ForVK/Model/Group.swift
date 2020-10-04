@@ -10,17 +10,17 @@ import UIKit
 
 class Group {
 
-    var id: Int
+    var id: String
     var name: String
     var avatarUrl: String?
     
     init() {
         self.name = "groupName"
-        self.id = 0
+        self.id = "0"
         
     }
     
-    init(name: String, avatarUrl: String, id: Int) {
+    init(name: String, avatarUrl: String, id: String) {
         self.name = name
         self.avatarUrl = avatarUrl
         self.id = id
@@ -29,7 +29,7 @@ class Group {
     init(jsonDict: [String: Any]) {
         self.name = jsonDict[VKWebSet.name.rawValue] as? String ?? "groupName"
         self.avatarUrl = jsonDict[VKWebSet.avatarPhoto200.rawValue] as? String
-        self.id = jsonDict[VKWebSet.id.rawValue] as? Int ?? 0
+        self.id = String(jsonDict[VKWebSet.id.rawValue] as? Int ?? 0)
     }
 
 }

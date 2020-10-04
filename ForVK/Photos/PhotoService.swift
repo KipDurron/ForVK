@@ -9,7 +9,7 @@ import Alamofire
 
 class PhotoService {
     
-    func getAllphotoUser(idUser: Int, completion: @escaping ([String]) -> Void) {
+    func getAllphotoUser(idUser: String, completion: @escaping ([String]) -> Void) {
         
         var urlConstructor = URLComponents()
         urlConstructor.scheme = VKWebSet.scheme.rawValue
@@ -19,7 +19,7 @@ class PhotoService {
                     URLQueryItem(name: "access_token", value: Session.instance.token),
                     URLQueryItem(name: "v", value: "5.124"),
                     URLQueryItem(name: "album_id", value: "saved"),
-                    URLQueryItem(name: "owner_id", value: String(idUser))
+                    URLQueryItem(name: "owner_id", value: idUser)
                 ]
         
         AF.request(urlConstructor.url!).responseJSON { response in

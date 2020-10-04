@@ -10,7 +10,7 @@ import Alamofire
 
 class GroupService {
     
-    func getGroupUser(idUser: Int, completion: @escaping ([Group]) -> Void) {
+    func getGroupUser(idUser: String, completion: @escaping ([Group]) -> Void) {
         var urlConstructor = URLComponents()
         urlConstructor.scheme = VKWebSet.scheme.rawValue
         urlConstructor.host = VKWebSet.host.rawValue
@@ -19,7 +19,7 @@ class GroupService {
                     URLQueryItem(name: "access_token", value: Session.instance.token),
                     URLQueryItem(name: "v", value: "5.124"),
                     URLQueryItem(name: "extended", value: "1"),
-                    URLQueryItem(name: "user_id", value: String(idUser))
+                    URLQueryItem(name: "user_id", value: idUser)
                 ]
         
         AF.request(urlConstructor.url!).responseJSON { response in

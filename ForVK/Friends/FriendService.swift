@@ -11,7 +11,7 @@ import Alamofire
 
 class FriendService {
     
-    func loadAllFriendData(idUser: Int, completion: @escaping ([User]) -> Void) {
+    func loadAllFriendData(idUser: String, completion: @escaping ([User]) -> Void) {
         var urlConstructor = URLComponents()
         urlConstructor.scheme = VKWebSet.scheme.rawValue
         urlConstructor.host = VKWebSet.host.rawValue
@@ -20,7 +20,7 @@ class FriendService {
             URLQueryItem(name: "access_token", value: Session.instance.token),
                     URLQueryItem(name: "v", value: "5.124"),
                     URLQueryItem(name: "fields", value: "nicknam,photo_200"),
-                    URLQueryItem(name: "user_id", value: String(idUser)),
+                    URLQueryItem(name: "user_id", value: idUser),
                 ]
         AF.request(urlConstructor.url!).responseJSON{ response in
             guard let data = response.value else { return }

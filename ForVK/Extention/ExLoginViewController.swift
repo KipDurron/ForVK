@@ -30,7 +30,7 @@ extension LoginFormController: WKNavigationDelegate {
             
             let session = Session.instance
             session.token = params["access_token"]!
-            session.userId = Int(params["user_id"]!)!
+            session.userId = String(params["user_id"]!)
             
             decisionHandler(.cancel)
             performSegue(withIdentifier: "successLogin", sender: self)

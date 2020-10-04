@@ -7,5 +7,6 @@ target 'ForVK' do
 
   # Pods for ForVK
   pod 'Alamofire', '~> 5.2'
+  pod 'SwiftKeychainWrapper', '~> 4.0'
 
 end

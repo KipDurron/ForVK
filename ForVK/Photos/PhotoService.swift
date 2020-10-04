@@ -34,14 +34,15 @@ class PhotoService {
         var photoUrlArr: [String] = []
         items.forEach({ item in
             let sizes = item["sizes"] as! [[String: Any]]
-            sizes.forEach({ size in
-                let urlStr = size["url"] as? String
-                if urlStr != nil {
-                    photoUrlArr.append(urlStr!)
+            for size in sizes {
+                if size["type"] as! String == "q" {
+                    let urlStr = size["url"] as? String
+                    if urlStr != nil {
+                        photoUrlArr.append(urlStr!)
+                    }
+                    break
                 }
-               
-            })
-            
+            }
         })
         return photoUrlArr
     }

@@ -26,11 +26,22 @@ class User{
     }
     
     init(jsonDict: [String: Any]) {
-        let firstName = jsonDict[VKWebSet.firstName.rawValue] as? String
-        let lastName = jsonDict[VKWebSet.lastName.rawValue] as? String
+        let firstName = jsonDict[VKSet.firstName.rawValue] as? String
+        let lastName = jsonDict[VKSet.lastName.rawValue] as? String
         self.name = (firstName ?? "firstName") + " " + (lastName ?? "lastName")
-        self.avatarUrl = jsonDict[VKWebSet.avatarPhoto200.rawValue] as? String
-        self.id = String(jsonDict[VKWebSet.id.rawValue] as? Int ?? 0)
+        self.avatarUrl = jsonDict[VKSet.avatarPhoto200.rawValue] as? String
+        self.id = String(jsonDict[VKSet.id.rawValue] as? Int ?? 0)
+    }
+    
+    init(cdUser: CDUser) {
+        self.name = cdUser.name ?? "firstName lastName"
+        self.avatarUrl = cdUser.avatarUrl?.absoluteString ?? nil
+        self.id = cdUser.id ?? "0"
     }
 
+    init(rUser: RUser) {
+        self.name = rUser.name ?? "firstName lastName"
+        self.avatarUrl = rUser.avatarUrl
+        self.id = rUser.id ?? "0"
+    }
 }

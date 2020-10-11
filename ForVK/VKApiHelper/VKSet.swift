@@ -13,7 +13,7 @@ import Foundation
 //    case scheme = "http"
 //}
 
-enum VKWebSet: String {
+enum VKSet: String {
     case scheme = "https"
     case host = "api.vk.com"
     case methodGetAllFriend = "/method/friends.get"
@@ -25,4 +25,6 @@ enum VKWebSet: String {
     case avatarPhoto200 = "photo_200"
     case id = "id"
     case name = "name"
+    case likes = "likes"
+    case count = "count"
 }

@@ -19,6 +19,7 @@ extension CDPhoto {
 
     @NSManaged public var url: URL?
     @NSManaged public var countLike: Int64
+    @NSManaged public var id: String
 
 }
 

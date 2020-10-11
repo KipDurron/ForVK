@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDGroup" representedClassName="CDGroup" syncable="YES">
+        <attribute name="avatarUrl" optional="YES" attributeType="URI"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="CDPhoto" representedClassName="CDPhoto" syncable="YES">
+        <attribute name="countLike" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+    </entity>
+    <entity name="CDUser" representedClassName="CDUser" syncable="YES">
+        <attribute name="avatarUrl" optional="YES" attributeType="URI"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="CDGroup" positionX="-36" positionY="36" width="128" height="88"/>
+        <element name="CDPhoto" positionX="-18" positionY="63" width="128" height="73"/>
+        <element name="CDUser" positionX="-54" positionY="-9" width="128" height="88"/>
+    </elements>
+</model>

@@ -8,17 +8,22 @@
 
 import Foundation
 import CoreData
-class CDUserService {
+class CDUserService: DBServiceInterface {
     
+    typealias VKObject = User
+        
     let coreData = CoreData()
     
-    func save(user: User) {
-        if !self.checkExist(id: user.id) {
+    func save(vkObject: User) -> String? {
+        if !self.checkExist(id: vkObject.id) {
             let newUser = CDUser(context: coreData.getVeiwContext())
-            newUser.avatarUrl = URL(string: user.avatarUrl ?? "")
-            newUser.id = user.id
-            newUser.name = user.name
+            newUser.avatarUrl = URL(string: vkObject.avatarUrl ?? "")
+            newUser.id = vkObject.id
+            newUser.name = vkObject.name
             coreData.saveContext()
+            return newUser.id
+        } else {
+            return nil
         }
     }
     
@@ -42,10 +47,12 @@ class CDUserService {
         }
     }
     
-    func load() -> [CDUser] {
+    func load() -> [User] {
         do {
             let fetchReq: NSFetchRequest<CDUser> = CDUser.fetchRequest()
-            return try coreData.getVeiwContext().fetch(fetchReq) as? [CDUser] ?? []
+            let cdUserList = try coreData.getVeiwContext().fetch(fetchReq) as? [CDUser] ?? []
+            return cdUserList.map{User(cdUser: $0)}
+            
         } catch {
             debugPrint("dont load data of User from DB")
             return []

@@ -9,17 +9,18 @@ import Alamofire
 
 class PhotoService {
     
-    func getAllphotoUser(idUser: String, completion: @escaping ([String]) -> Void) {
+    func getAllphotoUser(idUser: String, completion: @escaping ([Photo]) -> Void) {
         
         var urlConstructor = URLComponents()
-        urlConstructor.scheme = VKWebSet.scheme.rawValue
-        urlConstructor.host = VKWebSet.host.rawValue
-        urlConstructor.path = VKWebSet.methodGetPhotoUser.rawValue
+        urlConstructor.scheme = VKSet.scheme.rawValue
+        urlConstructor.host = VKSet.host.rawValue
+        urlConstructor.path = VKSet.methodGetPhotoUser.rawValue
         urlConstructor.queryItems = [
                     URLQueryItem(name: "access_token", value: Session.instance.token),
                     URLQueryItem(name: "v", value: "5.124"),
                     URLQueryItem(name: "album_id", value: "saved"),
-                    URLQueryItem(name: "owner_id", value: idUser)
+                    URLQueryItem(name: "owner_id", value: idUser),
+                    URLQueryItem(name: "extended", value: "1")
                 ]
         
         AF.request(urlConstructor.url!).responseJSON { response in
@@ -29,22 +30,13 @@ class PhotoService {
         }
     }
     
-    func parsingPhotosUser(items: [[String: Any]]) -> [String] {
+    func parsingPhotosUser(items: [[String: Any]]) -> [Photo] {
         
-        var photoUrlArr: [String] = []
+        var photoArr: [Photo] = []
         items.forEach({ item in
-            let sizes = item["sizes"] as! [[String: Any]]
-            for size in sizes {
-                if size["type"] as! String == "q" {
-                    let urlStr = size["url"] as? String
-                    if urlStr != nil {
-                        photoUrlArr.append(urlStr!)
-                    }
-                    break
-                }
-            }
+            photoArr.append(Photo(jsonDict: item))
         })
-        return photoUrlArr
+        return photoArr
     }
     
 }

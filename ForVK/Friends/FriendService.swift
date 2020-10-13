@@ -13,9 +13,9 @@ class FriendService {
     
     func loadAllFriendData(idUser: String, completion: @escaping ([User]) -> Void) {
         var urlConstructor = URLComponents()
-        urlConstructor.scheme = VKWebSet.scheme.rawValue
-        urlConstructor.host = VKWebSet.host.rawValue
-        urlConstructor.path = VKWebSet.methodGetAllFriend.rawValue
+        urlConstructor.scheme = VKSet.scheme.rawValue
+        urlConstructor.host = VKSet.host.rawValue
+        urlConstructor.path = VKSet.methodGetAllFriend.rawValue
         urlConstructor.queryItems = [
             URLQueryItem(name: "access_token", value: Session.instance.token),
                     URLQueryItem(name: "v", value: "5.124"),

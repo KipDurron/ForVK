@@ -8,17 +8,22 @@
 
 import Foundation
 import CoreData
-class CDGroupService {
+class CDGroupService: DBServiceInterface {
+    
+    typealias VKObject = Group
     
     let coreData = CoreData()
     
-    func save(group: Group) {
-        if !self.checkExist(id: group.id) {
+    func save(vkObject: Group) -> String? {
+        if !self.checkExist(id: vkObject.id) {
             let newGroup = CDGroup(context: coreData.getVeiwContext())
-            newGroup.avatarUrl = URL(string: group.avatarUrl ?? "")
-            newGroup.id = group.id
-            newGroup.name = group.name
+            newGroup.avatarUrl = URL(string: vkObject.avatarUrl ?? "")
+            newGroup.id = vkObject.id
+            newGroup.name = vkObject.name
             coreData.saveContext()
+            return newGroup.id
+        } else {
+            return nil
         }
     }
     
@@ -42,10 +47,11 @@ class CDGroupService {
         }
     }
     
-    func load() -> [CDGroup] {
+    func load() -> [Group] {
         do {
             let fetchReq: NSFetchRequest<CDGroup> = CDGroup.fetchRequest()
-            return try coreData.getVeiwContext().fetch(fetchReq) as? [CDGroup] ?? []
+            let cdGroupList = try coreData.getVeiwContext().fetch(fetchReq) as? [CDGroup] ?? []
+            return cdGroupList.map{Group(cdGroup: $0)}
         } catch {
             debugPrint("dont load data of Group from DB")
             return []

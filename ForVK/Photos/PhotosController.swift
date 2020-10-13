@@ -12,7 +12,7 @@ import UIKit
 
 class PhotosController: UICollectionViewController {
     
-    var photos: [String] = []
+    var photos: [Photo] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,8 @@ class PhotosController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotosCell", for: indexPath) as! PhotosCell
-        UIImage.load(from: self.photos[indexPath.row]) {image in
+        cell.likeControl.countLikes = self.photos[indexPath.row].countLike
+        UIImage.load(from: self.photos[indexPath.row].url) {image in
             cell.photo.image = image
         }
 //        cell.photo.image = self.photos[indexPath.row]

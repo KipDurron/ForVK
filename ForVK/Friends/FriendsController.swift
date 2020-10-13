@@ -15,6 +15,8 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
     var searchFriend: [User] = []
     var friendService = FriendService()
     var photoService = PhotoService()
+    var dbUserService = RUserService()!
+    var dbPhotoService = RPhotoService()!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +25,10 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         friendService.loadAllFriendData(idUser: Session.instance.userId) { allFriend in
-            
-            self.allFriend = allFriend
+            allFriend.forEach({ friend in
+                self.dbUserService.save(vkObject: friend)
+            })
+            self.allFriend = self.dbUserService.load()
             self.tableView.reloadData()
         }
 
@@ -38,7 +42,10 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
             // Получаем индекс выделенной ячейки
                 if let indexPath = self.tableView.indexPathForSelectedRow {
                     photoService.getAllphotoUser(idUser: self.allFriend[indexPath.row].id) { allPhoto in
-                        photosController?.photos = allPhoto
+                        allPhoto.forEach({ photo in
+                            self.dbPhotoService.save(vkObject: photo)
+                        })
+                        photosController?.photos = self.dbPhotoService.load()
                         photosController?.collectionView.reloadData()
                         }
                     }

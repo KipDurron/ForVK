@@ -7,6 +7,7 @@
     </entity>
     <entity name="CDPhoto" representedClassName="CDPhoto" syncable="YES">
         <attribute name="countLike" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="url" optional="YES" attributeType="URI"/>
     </entity>
     <entity name="CDUser" representedClassName="CDUser" syncable="YES">
@@ -16,7 +17,7 @@
     </entity>
     <elements>
         <element name="CDGroup" positionX="-36" positionY="36" width="128" height="88"/>
-        <element name="CDPhoto" positionX="-18" positionY="63" width="128" height="73"/>
+        <element name="CDPhoto" positionX="-18" positionY="63" width="128" height="88"/>
         <element name="CDUser" positionX="-54" positionY="-9" width="128" height="88"/>
     </elements>
 </model>

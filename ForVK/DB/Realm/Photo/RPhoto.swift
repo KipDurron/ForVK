@@ -13,4 +13,5 @@ class RPhoto: Object {
    @objc dynamic var url: String? = nil
    @objc dynamic var countLike: Int = 0
     @objc dynamic var id: String = "0"
+    @objc dynamic var userId: String = "0"
 }

@@ -26,15 +26,15 @@ class PhotoService {
         AF.request(urlConstructor.url!).responseJSON { response in
             guard let data = response.value else { return }
             let items = VKParsingHelper.getItems(data: data)
-            completion(self.parsingPhotosUser(items: items))
+            completion(self.parsingPhotosUser(items: items, idUser: idUser))
         }
     }
     
-    func parsingPhotosUser(items: [[String: Any]]) -> [Photo] {
+    func parsingPhotosUser(items: [[String: Any]], idUser: String) -> [Photo] {
         
         var photoArr: [Photo] = []
         items.forEach({ item in
-            photoArr.append(Photo(jsonDict: item))
+            photoArr.append(Photo(jsonDict: item, userId: idUser))
         })
         return photoArr
     }

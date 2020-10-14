@@ -10,16 +10,14 @@ import UIKit
 
 class UserGroupsController: UITableViewController {
     
-    var dbGroupService = RGroupService()!
+    var dbGroupService = RGroupService()
     var userGroups: [Group] = []
     var groupService = GroupService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         groupService.getGroupUser(idUser: Session.instance.userId){userGroups in
-            userGroups.forEach({ group in
-                self.dbGroupService.save(vkObject: group)
-            })
+            self.dbGroupService.saveAll(vkObjectList: userGroups)
             self.userGroups = self.dbGroupService.load()
             self.tableView.reloadData()
         }

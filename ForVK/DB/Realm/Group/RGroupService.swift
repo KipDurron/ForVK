@@ -1,5 +1,5 @@
 //
-//  RUserService.swift
+//  RGroupService.swift
 //  ForVK
 //
 //  Created by Илья Кадыров on 11.10.2020.
@@ -13,16 +13,47 @@ class RGroupService: DBServiceInterface {
     
     typealias VKObject = Group
     
+    let realmSetting = RealmSetting()
     let realm: Realm
     
-    init?() {
+    init() {
+        realm = realmSetting.getRealm()
+    }
+    
+    func update(vkObject: Group) -> String? {
+        guard let updateGroup = self.getById(id: vkObject.id) else {
+            return nil
+        }
         do {
-            let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
-            self.realm = try Realm(configuration: config)
-            debugPrint(realm.configuration.fileURL)
+            realm.beginWrite()
+            updateGroup.avatarUrl = vkObject.avatarUrl
+            updateGroup.name = vkObject.name
+            try realm.commitWrite()
         } catch {
             debugPrint(error)
-            return nil
+        }
+        return updateGroup.id
+    }
+    
+    func saveAll(vkObjectList: [Group]) {
+        realm.beginWrite()
+        do {
+            for group in vkObjectList {
+                if !self.checkExist(id: group.id) {
+                    let rGroup = RGroup()
+                    rGroup.id = group.id
+                    rGroup.avatarUrl = group.avatarUrl
+                    rGroup.name = group.name
+                    realm.add(rGroup)
+                } else {
+                    let updateGroup = self.getById(id: group.id)!
+                    updateGroup.avatarUrl = group.avatarUrl
+                    updateGroup.name = group.name
+                }
+            }
+            try realm.commitWrite()
+        } catch {
+            debugPrint(error)
         }
     }
     

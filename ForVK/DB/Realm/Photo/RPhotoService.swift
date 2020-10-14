@@ -10,19 +10,53 @@ import Foundation
 import RealmSwift
 
 class RPhotoService: DBServiceInterface {
-    
+ 
     typealias VKObject = Photo
     
+    let realmSetting = RealmSetting()
     let realm: Realm
     
-    init?() {
+    init() {
+        realm = realmSetting.getRealm()
+    }
+    
+    func update(vkObject: Photo) -> String? {
+        guard let updatePhoto = self.getById(id: vkObject.id) else {
+            return nil
+        }
         do {
-            let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
-            self.realm = try Realm(configuration: config)
-            debugPrint(realm.configuration.fileURL)
+            realm.beginWrite()
+            updatePhoto.url = vkObject.url
+            updatePhoto.countLike = vkObject.countLike
+            updatePhoto.userId = vkObject.userId
+            try realm.commitWrite()
         } catch {
             debugPrint(error)
-            return nil
+        }
+        return updatePhoto.id
+    }
+    
+    func saveAll(vkObjectList: [Photo]) {
+        realm.beginWrite()
+        do {
+            for photo in vkObjectList {
+                if !self.checkExist(id: photo.id) {
+                    let rPhoto =  RPhoto()
+                    rPhoto.id = photo.id
+                    rPhoto.url = photo.url
+                    rPhoto.countLike = photo.countLike
+                    rPhoto.userId = photo.userId
+                    realm.add(rPhoto)
+                } else {
+                    let updatePhoto = self.getById(id: photo.id)!
+                    updatePhoto.url = photo.url
+                    updatePhoto.countLike = photo.countLike
+                    updatePhoto.userId = photo.userId
+                }
+            }
+            try realm.commitWrite()
+        } catch {
+            debugPrint(error)
         }
     }
     
@@ -33,10 +67,13 @@ class RPhotoService: DBServiceInterface {
                 rPhoto.id = vkObject.id
                 rPhoto.url = vkObject.url
                 rPhoto.countLike = vkObject.countLike
+                rPhoto.userId = vkObject.userId
                 realm.beginWrite()
                 realm.add(rPhoto)
                 try realm.commitWrite()
                 return vkObject.id
+            } else {
+                self.update(vkObject: vkObject)
             }
         } catch {
             debugPrint(error)
@@ -58,6 +95,10 @@ class RPhotoService: DBServiceInterface {
     
     func load() -> [Photo] {
         return realm.objects(RPhoto.self).map{Photo(rPhoto: $0)}
+    }
+    
+    func loadByUser(userId: String) -> [Photo] {
+        return realm.objects(RPhoto.self).filter("userId == %@", userId).map{Photo(rPhoto: $0)}
     }
     
 }

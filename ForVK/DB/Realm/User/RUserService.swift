@@ -13,16 +13,47 @@ class RUserService: DBServiceInterface {
     
     typealias VKObject = User
     
+    let realmSetting = RealmSetting()
     let realm: Realm
     
-    init?() {
+    init() {
+        realm = realmSetting.getRealm()
+    }
+    
+    func update(vkObject: User) -> String? {
+        guard let updateUser = self.getById(id: vkObject.id) else {
+            return nil
+        }
         do {
-            let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
-            self.realm = try Realm(configuration: config)
-            debugPrint(realm.configuration.fileURL)
+            realm.beginWrite()
+            updateUser.avatarUrl = vkObject.avatarUrl
+            updateUser.name = vkObject.name
+            try realm.commitWrite()
         } catch {
             debugPrint(error)
-            return nil
+        }
+        return updateUser.id
+    }
+    
+    func saveAll(vkObjectList: [User]) {
+        realm.beginWrite()
+        do {
+            for user in vkObjectList {
+                if !self.checkExist(id: user.id) {
+                    let rUser = RUser()
+                    rUser.id = user.id
+                    rUser.avatarUrl = user.avatarUrl
+                    rUser.name = user.name
+                    realm.add(rUser)
+                } else {
+                    let updateUser = self.getById(id: user.id)!
+                    updateUser.avatarUrl = user.avatarUrl
+                    updateUser.name = user.name
+                }
+            }
+            try realm.commitWrite()
+        } catch {
+            debugPrint(error)
         }
     }
     

@@ -13,5 +13,6 @@ protocol DBServiceInterface {
     
     func save(vkObject: VKObject) -> String?
     func load() -> [VKObject]
+    func saveAll(vkObjectList: [VKObject])
     
 }

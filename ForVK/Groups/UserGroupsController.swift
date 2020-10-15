@@ -7,44 +7,67 @@
 //
 
 import UIKit
+import RealmSwift
 
 class UserGroupsController: UITableViewController {
     
     var dbGroupService = RGroupService()
-    var userGroups: [Group] = []
+    var userGroups: Results<RGroup>?
     var groupService = GroupService()
+    var token: NotificationToken?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         groupService.getGroupUser(idUser: Session.instance.userId){userGroups in
             self.dbGroupService.saveAll(vkObjectList: userGroups)
-            self.userGroups = self.dbGroupService.load()
-            self.tableView.reloadData()
+            self.userGroups = self.dbGroupService.loadResult()
+            self.setToken()
         }
-
-        
     }
     
-    @IBAction func addGroup(segue: UIStoryboardSegue) {
-        // Проверяем идентификатор перехода, чтобы убедиться, что это нужный
-        if segue.identifier == "addGroup" {
-        // Получаем ссылку на контроллер, с которого осуществлен переход
-            guard let allGroupController = segue.source as? AllGroupController else { return }
-        // Получаем индекс выделенной ячейки
-            if let indexPath = allGroupController.tableView.indexPathForSelectedRow {
-        // Получаем город по индексу
-                let group = allGroupController.allGroups[indexPath.row]
-        // Проверяем, что такого города нет в списке
-                if !self.userGroups.contains(where: { $0.name == group.name }) {
-        // Добавляем город в список выбранных
-                    self.userGroups.append(group)
-        // Обновляем таблицу
-                    tableView.reloadData()
-                }
-            }
-        }
+    private func setToken() {
+        self.token = userGroups!.observe { [weak self] (changes: RealmCollectionChange) in
+                    guard let tableView = self?.tableView else { return }
+                    switch changes {
+                    case .initial:
+                        tableView.reloadData()
+                    case .update(_, let deletions, let insertions, let modifications):
+                        tableView.beginUpdates()
+                        tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                             with: .automatic)
+                        tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                             with: .automatic)
+                        tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                             with: .automatic)
+                        tableView.endUpdates()
 
+                    case .error(let error):
+                        fatalError("\(error)")
+
+                    }
+        }
     }
+    
+//    @IBAction func addGroup(segue: UIStoryboardSegue) {
+//        // Проверяем идентификатор перехода, чтобы убедиться, что это нужный
+//        if segue.identifier == "addGroup" {
+//        // Получаем ссылку на контроллер, с которого осуществлен переход
+//            guard let allGroupController = segue.source as? AllGroupController else { return }
+//        // Получаем индекс выделенной ячейки
+//            if let indexPath = allGroupController.tableView.indexPathForSelectedRow {
+//        // Получаем город по индексу
+//                let group = allGroupController.allGroups[indexPath.row]
+//        // Проверяем, что такого города нет в списке
+//                if !self.userGroups!.contains(where: { $0.name == group.name }) {
+//        // Добавляем город в список выбранных
+//                    self.userGroups.append(group)
+//        // Обновляем таблицу
+//                    tableView.reloadData()
+//                }
+//            }
+//        }
+//
+//    }
 
 
     // MARK: - Table view data source
@@ -56,13 +79,13 @@ class UserGroupsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.userGroups.count
+        return self.userGroups?.count ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupsCell", for: indexPath) as! GroupsCell
-        let currentGroup = self.userGroups[indexPath.row]
+        let currentGroup = self.userGroups![indexPath.row]
         cell.name.text = currentGroup.name
         UIImage.load(from: currentGroup.avatarUrl) {image in
             cell.avatar.image = image
@@ -85,16 +108,16 @@ class UserGroupsController: UITableViewController {
 
     
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        // Если была нажата кнопка «Удалить»
-        if editingStyle == .delete {
-        // Удаляем город из массива
-            self.userGroups.remove(at: indexPath.row)
-        // И удаляем строку из таблицы
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        // Если была нажата кнопка «Удалить»
+//        if editingStyle == .delete {
+//        // Удаляем город из массива
+//            self.userGroups.remove(at: indexPath.row)
+//        // И удаляем строку из таблицы
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
+//
+//    }
     
 
     /*

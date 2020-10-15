@@ -91,5 +91,9 @@ class RUserService: DBServiceInterface {
         return realm.objects(RUser.self).map{User(rUser: $0)}
     }
     
+    func loadResult() -> Results<RUser> {
+        return realm.objects(RUser.self)
+    }
+    
 }
 

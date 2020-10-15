@@ -7,12 +7,13 @@
 //
 
 import UIKit
-
+import RealmSwift
 
 
 class PhotosController: UICollectionViewController {
     
-    var photos: [Photo] = []
+    var photos: Results<RPhoto>?
+    var token: NotificationToken?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,21 @@ class PhotosController: UICollectionViewController {
         
     }
 
+    func setToken() {
+        self.token = photos!.observe { [weak self] (changes: RealmCollectionChange) in
+                    guard let collectionView = self?.collectionView else { return }
+                    switch changes {
+                    case .initial:
+                        collectionView.reloadData()
+                    case .update(_, let deletions, let insertions, let modifications):
+                        collectionView.reloadData()
+                    case .error(let error):
+                        fatalError("\(error)")
+
+                    }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -46,13 +62,13 @@ class PhotosController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return self.photos.count
+        return self.photos?.count ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotosCell", for: indexPath) as! PhotosCell
-        cell.likeControl.countLikes = self.photos[indexPath.row].countLike
-        UIImage.load(from: self.photos[indexPath.row].url) {image in
+        cell.likeControl.countLikes = self.photos![indexPath.row].countLike
+        UIImage.load(from: self.photos![indexPath.row].url) {image in
             cell.photo.image = image
         }
 //        cell.photo.image = self.photos[indexPath.row]

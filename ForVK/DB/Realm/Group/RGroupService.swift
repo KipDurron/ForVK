@@ -91,5 +91,9 @@ class RGroupService: DBServiceInterface {
         return realm.objects(RGroup.self).map{Group(rGroup: $0)}
     }
     
+    func loadResult() -> Results<RGroup> {
+        return realm.objects(RGroup.self)
+    }
+    
 }
 

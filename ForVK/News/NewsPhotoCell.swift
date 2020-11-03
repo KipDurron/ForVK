@@ -8,19 +8,15 @@
 
 import UIKit
 
-class NewsCell: UITableViewCell {
+class NewsPhotoCell: UITableViewCell {
+
 
     @IBOutlet weak var avatarAuthor: UIImageView!
     
     @IBOutlet weak var nameAuthor: UILabel!
-    
-    
+
     @IBOutlet weak var date: UILabel!
-    
-  
-    @IBOutlet weak var textNews: UILabel!
-    
-    
+
     @IBOutlet weak var img: UIImageView!
     
     func configure(item: News, dateFormatter: DateFormatter) {

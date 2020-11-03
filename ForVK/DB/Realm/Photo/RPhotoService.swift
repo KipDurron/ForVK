@@ -101,5 +101,13 @@ class RPhotoService: DBServiceInterface {
         return realm.objects(RPhoto.self).filter("userId == %@", userId).map{Photo(rPhoto: $0)}
     }
     
+    func loadResult() -> Results<RPhoto> {
+        return realm.objects(RPhoto.self)
+    }
+    
+    func loadResultByUser(userId: String) -> Results<RPhoto> {
+        return realm.objects(RPhoto.self).filter("userId == %@", userId)
+    }
+    
 }
 

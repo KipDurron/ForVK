@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FriendsController: UITableViewController, UISearchResultsUpdating{
 
-    var allFriend: [User] = []
+    var allFriend: Results<RUser>?
+    var token: NotificationToken?
     var searchController: UISearchController!
-    var searchFriend: [User] = []
+    var searchFriend: Results<RUser>?
     var friendService = FriendService()
     var photoService = PhotoService()
     var dbUserService = RUserService()
@@ -26,10 +28,33 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
         searchController.obscuresBackgroundDuringPresentation = false
         friendService.loadAllFriendData(idUser: Session.instance.userId) { allFriend in
             self.dbUserService.saveAll(vkObjectList: allFriend)
-            self.allFriend = self.dbUserService.load()
-            self.tableView.reloadData()
+            self.allFriend = self.dbUserService.loadResult()
+            self.setToken()
         }
 
+    }
+    
+    private func setToken() {
+        self.token = allFriend!.observe { [weak self] (changes: RealmCollectionChange) in
+                    guard let tableView = self?.tableView else { return }
+                    switch changes {
+                    case .initial:
+                        tableView.reloadData()
+                    case .update(_, let deletions, let insertions, let modifications):
+                        tableView.beginUpdates()
+                        tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                             with: .automatic)
+                        tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                             with: .automatic)
+                        tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                             with: .automatic)
+                        tableView.endUpdates()
+
+                    case .error(let error):
+                        fatalError("\(error)")
+
+                    }
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -39,11 +64,14 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
             let photosController = segue.destination as? PhotosController
             // Получаем индекс выделенной ячейки
                 if let indexPath = self.tableView.indexPathForSelectedRow {
-                    let userId = self.allFriend[indexPath.row].id
+                    guard (self.allFriend != nil) else {
+                        return
+                    }
+                    let userId = self.allFriend![indexPath.row].id ?? "0"
                     photoService.getAllphotoUser(idUser: userId) { allPhoto in
                         self.dbPhotoService.saveAll(vkObjectList: allPhoto)
-                        photosController?.photos = self.dbPhotoService.loadByUser(userId: userId)
-                        photosController?.collectionView.reloadData()
+                        photosController?.photos = self.dbPhotoService.loadResultByUser(userId: userId)
+                        photosController?.setToken()
                         }
                     }
         }
@@ -57,14 +85,11 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
     }
     
     func filtrBySearch(textSearch: String) {
-        searchFriend = allFriend.filter({
-            (friend: User) -> Bool in
-            if friend.name.lowercased().range(of:textSearch.lowercased()) != nil {
-                return true
-            } else {
-                return false
-            }
-        })
+        guard (self.allFriend != nil) else {
+            return
+        }
+        searchFriend = allFriend!.filter("name LIKE %@", "*\(textSearch)*")
+     
     }
     
     // MARK: - Table view data source
@@ -77,16 +102,17 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if searchController.isActive {
-            return searchFriend.count
+            return searchFriend?.count ?? 0
         } else {
-            return allFriend.count
+            return allFriend?.count ?? 0
         }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCell", for: indexPath) as! FriendsCell
-        let currentFriend = (searchController.isActive) ? self.searchFriend[indexPath.row] : self.allFriend[indexPath.row]
+        let currentFriend = (searchController.isActive) ? self.searchFriend![indexPath.row] : self.allFriend![indexPath.row]
         UIImage.load(from: currentFriend.avatarUrl) {image in
             cell.avatarView.avatarImage = image
         }
@@ -105,42 +131,4 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
         return true
     }
     
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

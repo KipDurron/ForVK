@@ -12,31 +12,16 @@ class News {
 
     var author: User
     var date: Date
-    var text: String
-    var img: UIImage?
 
     init() {
         self.author = User()
         self.date = Date()
-        self.text = "Empty"
-        self.img = UIImage(systemName: "list.number")
     }
 
-    init(author: User, date: Date, text: String, img: UIImage?) {
+    init(author: User, date: Date) {
         self.author = author
         self.date = date
-        self.text = text
-        self.img = img
     }
-    
-//    static func getRandom() -> News {
-//        return News(
-//            author: UserLight.getRandom(),
-//            date: Date(),
-//            text: Lorem.sentences(5),
-//            img: Lorem.img
-//        )
-//    }
 
 }
 

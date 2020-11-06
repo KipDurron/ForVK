@@ -22,6 +22,10 @@ class News {
         self.author = author
         self.date = date
     }
+    
+    func getNewsData() {
+        fatalError("Implement This method in subClass")
+    }
 
 }
 

@@ -11,6 +11,7 @@ import UIKit
 class NewsViewController: UITableViewController {
 
     var news: [News] = []
+    var newsService = NewsService()
     
     lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -20,12 +21,7 @@ class NewsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        news = (1...5).map { _ in News.getRandom() }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        newsService.getNews()
     }
 
     // MARK: - Table view data source

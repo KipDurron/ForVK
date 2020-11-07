@@ -33,14 +33,6 @@ class User{
         self.id = String(jsonDict[VKSet.id.rawValue] as? Int ?? 0)
     }
     
-//    init(jsonSource: JSON) {
-//        let firstName = jsonSource[VKSet.firstName.rawValue].string
-//        let lastName = jsonSource[VKSet.lastName.rawValue].string
-//        self.name = (firstName ?? "firstName") + " " + (lastName ?? "lastName")
-//        self.avatarUrl = jsonSource[VKSet.avatarPhoto200.rawValue].string
-//        self.id = String(jsonSource[VKSet.id.rawValue].int ?? 0)
-//    }
-    
     init(cdUser: CDUser) {
         self.name = cdUser.name ?? "firstName lastName"
         self.avatarUrl = cdUser.avatarUrl?.absoluteString ?? nil

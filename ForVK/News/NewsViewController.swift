@@ -21,7 +21,10 @@ class NewsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        newsService.getNews()
+        newsService.getNews() {news in
+            self.news = news
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -38,9 +41,16 @@ class NewsViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsPhotoCell", for: indexPath) as! NewsPhotoCell
-        cell.configure(item: news[indexPath.row], dateFormatter: dateFormatter)
-        return cell
+        let currentCell = news[indexPath.row]
+        if currentCell.type == "photo" {
+         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsPhotoCell", for: indexPath) as! NewsPhotoCell
+            cell.configure(item: currentCell as! PhotoNews, dateFormatter: dateFormatter)
+            return cell
+        } else {
+           let cell = tableView.dequeueReusableCell(withIdentifier: "NewsPostCell", for: indexPath) as! NewsPostCell
+            cell.configure(item: currentCell as! PostNews, dateFormatter: dateFormatter)
+            return cell
+        }
     }
     
 

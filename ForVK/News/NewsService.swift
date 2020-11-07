@@ -11,54 +11,85 @@ import SwiftyJSON
 
 class NewsService {
 
-    func getNews() {
-       
+    let dispatchGroup = DispatchGroup()
+    var listNews:[News] = []
+    var listGroup:[SourseData] = []
+    var listProfile:[SourseData] = []
+    
+    func getNews(completion: @escaping ([News]) -> Void) {
        let urlNews = self.getUrlNews()
         AF.request(urlNews!).responseJSON { response in
-            guard let data = response.value else { return }
-            let items = JSON(data)["response"]["items"]
-            let groups = JSON(data)["response"]["groups"]
-            let profiles = JSON(data)["response"]["profiles"]
-            for (index,news):(String, JSON) in items {
-                guard let post_type = news["post_type"].string else {break}
-                if post_type == "post" {
-                    self.getPostNews(news: news, groups: groups, profiles: profiles)
-                }
-                if post_type == "photo" {
-                    self.getPhotoNews()
-                }
-            }
+            guard let data = response.data else { return }
+            self.parsing(data: data, completion: completion)
             
         }
     }
     
-    private func getPhotoNews() {
+    private func parsing(data: Data,completion: @escaping ([News]) -> Void)  {
+        self.parsingNews(data: data)
+        self.parsingGroups(data: data)
+        self.parsingProfiles(data: data)
         
-    }
-    
-    private func getPostNews(news: JSON, groups: JSON, profiles: JSON) {
         
-        guard let sourseId = news["source_id"].int else { return }
-        if sourseId < 0 {
-            self.setGroupData(groups: groups, idGroup:sourseId * -1)
-        } else {
-            self.setUserData(profiles: profiles, idProfile: sourseId)
+        dispatchGroup.notify(queue: .main) {
+            self.setSourse()
+            completion(self.listNews)
         }
         
     }
     
-    private func setGroupData(groups: JSON, idGroup: Int) -> User? {
-//        for (index, group):(String, JSON) in groups {
-//            guard let currentId = group[""].int else { continue }
-//            if currentId == idGroup {
-//                return User(jsonSource: group)
-//            }
-//        }
-        return nil
+    private func setSourse() {
+        for news in self.listNews {
+            if news.sourseId < 0 {
+                for group in self.listGroup {
+                    if group.id == (news.sourseId * -1) {
+                        news.sourseData = group
+                        break
+                    }
+                }
+            } else {
+                for user in self.listProfile{
+                    if user.id == news.sourseId {
+                        news.sourseData = user
+                        break
+                    }
+                }
+            }
+        }
+    }
+    private func parsingNews(data: Data) {
+        dispatchGroup.enter()
+        let items = JSON(data)["response"]["items"]
+       
+        for news:JSON in items.arrayValue {
+            guard let type = news["type"].string else {continue}
+            if type == "post" {
+                self.listNews.append(PostNews(newsJson: news))
+                }
+            if type == "photo" {
+                self.listNews.append(PhotoNews(newsJson: news))
+                }
+        }
+        dispatchGroup.leave()
     }
     
-    private func setUserData(profiles: JSON, idProfile: Int) {
+    private func parsingGroups(data: Data){
+        dispatchGroup.enter()
+        let groups = JSON(data)["response"]["groups"]
         
+        for group:JSON in groups.arrayValue {
+            self.listGroup.append(SourseData(groupJson: group))
+        }
+        dispatchGroup.leave()
+    }
+    
+    private func parsingProfiles(data: Data){
+        dispatchGroup.enter()
+        let profiles = JSON(data)["response"]["profiles"]
+        for user:JSON in profiles.arrayValue {
+            self.listProfile.append(SourseData(userJson: user))
+        }
+        dispatchGroup.leave()
     }
     
     func getUrlNews() -> URL? {
@@ -69,7 +100,7 @@ class NewsService {
         urlConstructor.queryItems = [
                     URLQueryItem(name: "access_token", value: Session.instance.token),
                     URLQueryItem(name: "v", value: "5.124"),
-                    URLQueryItem(name: "filters", value: "post, photo"),
+                    URLQueryItem(name: "filters", value: "post, photo, wall_photo"),
             URLQueryItem(name: "source_ids", value: "groups, friends")
                 ]
         return urlConstructor.url

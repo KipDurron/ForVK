@@ -10,17 +10,25 @@ import UIKit
 
 class News {
 
-    var author: User
+    var sourseData: SourseData?
     var date: Date
-
+    let sourseId: Int
+    let type: String
     init() {
-        self.author = User()
         self.date = Date()
+        self.sourseId = 0
+        self.type = ""
     }
 
-    init(author: User, date: Date) {
-        self.author = author
+    
+    init(date: Date, sourseId: Int, type: String) {
         self.date = date
+        self.sourseId = sourseId
+        self.type = type
+    }
+    
+    func getNewsData() {
+        fatalError("Implement This method in subClass")
     }
 
 }

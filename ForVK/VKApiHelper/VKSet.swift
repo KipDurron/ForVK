@@ -27,4 +27,5 @@ enum VKSet: String {
     case name = "name"
     case likes = "likes"
     case count = "count"
+    case methodGetNews = "/method/newsfeed.get"
 }

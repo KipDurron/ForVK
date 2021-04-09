@@ -9,5 +9,6 @@ target 'ForVK' do
   pod 'Alamofire', '~> 5.2'
   pod 'SwiftKeychainWrapper', '~> 4.0'
   pod 'RealmSwift', '~> 5.4.8'
+  pod 'SwiftyJSON', '~> 4.0'
 
 end

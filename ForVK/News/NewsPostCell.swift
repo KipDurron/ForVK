@@ -12,11 +12,13 @@ class NewsPostCell: UITableViewCell {
 
     @IBOutlet weak var avatarAuthor: UIImageView!
     
+    
     @IBOutlet weak var nameAuthor: UILabel!
     
     @IBOutlet weak var date: UILabel!
     
-    @IBOutlet weak var post: UILabel!
+   
+    @IBOutlet weak var post: UITextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +29,14 @@ class NewsPostCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    func configure(item: PostNews, dateFormatter: DateFormatter) {
+        UIImage.load(from: item.sourseData?.avatarUrl) {image in
+            self.avatarAuthor.image = image
+        }
+        self.nameAuthor.text = item.sourseData?.name
+        self.date.text = dateFormatter.string(from: item.date)
+        self.post.text = item.post
     }
 
 }

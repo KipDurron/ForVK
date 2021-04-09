@@ -11,6 +11,7 @@ import UIKit
 class NewsViewController: UITableViewController {
 
     var news: [News] = []
+    var newsService = NewsService()
     
     lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -20,12 +21,10 @@ class NewsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        news = (1...5).map { _ in News.getRandom() }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        newsService.getNews() {news in
+            self.news = news
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -42,9 +41,16 @@ class NewsViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsPhotoCell", for: indexPath) as! NewsPhotoCell
-        cell.configure(item: news[indexPath.row], dateFormatter: dateFormatter)
-        return cell
+        let currentCell = news[indexPath.row]
+        if currentCell.type == "photo" {
+         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsPhotoCell", for: indexPath) as! NewsPhotoCell
+            cell.configure(item: currentCell as! PhotoNews, dateFormatter: dateFormatter)
+            return cell
+        } else {
+           let cell = tableView.dequeueReusableCell(withIdentifier: "NewsPostCell", for: indexPath) as! NewsPostCell
+            cell.configure(item: currentCell as! PostNews, dateFormatter: dateFormatter)
+            return cell
+        }
     }
     
 

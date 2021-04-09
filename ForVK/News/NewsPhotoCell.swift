@@ -13,19 +13,22 @@ class NewsPhotoCell: UITableViewCell {
 
     @IBOutlet weak var avatarAuthor: UIImageView!
     
+    
     @IBOutlet weak var nameAuthor: UILabel!
-
+    
     @IBOutlet weak var date: UILabel!
 
     @IBOutlet weak var img: UIImageView!
     
-    func configure(item: News, dateFormatter: DateFormatter) {
-//        avatarAuthor.image = item.author.avatar
-//        nameAuthor.text = item.author.name
-//        date.text = dateFormatter.string(from: item.date)
-//        textNews.text = item.text
-//        textNews.numberOfLines = 0
-//        img.image = item.img
+    func configure(item: PhotoNews, dateFormatter: DateFormatter) {
+        UIImage.load(from: item.sourseData?.avatarUrl) {image in
+            self.avatarAuthor.image = image
+        }
+        self.nameAuthor.text = item.sourseData?.name
+        self.date.text = dateFormatter.string(from: item.date)
+        UIImage.load(from: item.photoUrl) {image in
+            self.img.image = image
+        }
     }
     
     override func awakeFromNib() {

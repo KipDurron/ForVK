@@ -14,6 +14,7 @@ extension UIImage {
             do {
                 if urlStr == nil {
                     completion(UIImage(systemName: "photo")!)
+                    return
                 }
                 let url = URL(string: urlStr!)
                 let data = try Data(contentsOf: url!)

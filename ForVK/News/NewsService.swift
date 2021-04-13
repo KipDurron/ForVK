@@ -18,9 +18,9 @@ class NewsService {
     
     func getNews(completion: @escaping ([News]) -> Void) {
        let urlNews = self.getUrlNews()
-        AF.request(urlNews!).responseJSON { response in
+        AF.request(urlNews!).responseJSON { [weak self] response in
             guard let data = response.data else { return }
-            self.parsing(data: data, completion: completion)
+            self?.parsing(data: data, completion: completion)
             
         }
     }

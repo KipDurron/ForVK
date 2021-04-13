@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Group {
+struct Group {
 
     
     var id: String

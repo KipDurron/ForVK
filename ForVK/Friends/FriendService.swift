@@ -22,10 +22,10 @@ class FriendService {
                     URLQueryItem(name: "fields", value: "nicknam,photo_200"),
                     URLQueryItem(name: "user_id", value: idUser),
                 ]
-        AF.request(urlConstructor.url!).responseJSON{ response in
+        AF.request(urlConstructor.url!).responseJSON{ [weak self] response in
             guard let data = response.value else { return }
             let items = VKParsingHelper.getItems(data: data)
-            completion(self.parsingFriend(items: items))
+            completion((self?.parsingFriend(items: items))!)
         }
         
     }

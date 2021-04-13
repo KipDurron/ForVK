@@ -23,10 +23,10 @@ class PhotoService {
                     URLQueryItem(name: "extended", value: "1")
                 ]
         
-        AF.request(urlConstructor.url!).responseJSON { response in
+        AF.request(urlConstructor.url!).responseJSON { [weak self] response in
             guard let data = response.value else { return }
             let items = VKParsingHelper.getItems(data: data)
-            completion(self.parsingPhotosUser(items: items, idUser: idUser))
+            completion((self?.parsingPhotosUser(items: items, idUser: idUser))!)
         }
     }
     

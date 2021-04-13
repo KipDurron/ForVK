@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Photo {
+struct Photo {
     var url: String?
     var countLike: Int = 0
     var id: String = "0"

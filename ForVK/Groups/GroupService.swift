@@ -22,10 +22,10 @@ class GroupService {
                     URLQueryItem(name: "user_id", value: idUser)
                 ]
         
-        AF.request(urlConstructor.url!).responseJSON { response in
+        AF.request(urlConstructor.url!).responseJSON { [weak self] response in
                 guard let data = response.value else { return }
                 let items = VKParsingHelper.getItems(data: data)
-                completion(self.parsingAllGroups(items: items))
+            completion((self?.parsingAllGroups(items: items))!)
         }
         
     }

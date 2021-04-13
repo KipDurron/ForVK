@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftyJSON
-class SourseData {
+struct SourseData {
     var id: Int = 0
     var name: String = "name"
     var avatarUrl: String?

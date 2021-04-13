@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class User{
+struct User{
 
     var name: String
     var avatarUrl: String?

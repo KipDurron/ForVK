@@ -114,12 +114,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="yJb-XG-dIp"/>
-                    <connections>
-                        <outlet property="loginInput" destination="SI2-BQ-9yI" id="pGi-RF-iZz"/>
-                        <outlet property="passwordInput" destination="4xJ-Mn-oj7" id="kcA-Rz-gEA"/>
-                        <outlet property="scrollView" destination="xwE-eR-BfP" id="2LF-Cd-GUi"/>
-                        <outlet property="webview" destination="uQw-Vd-OZP" id="u4o-57-1A3"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PWw-Vd-D9K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -219,8 +213,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="avatarView" destination="wKS-kn-RkE" id="imk-ek-1Bv"/>
-                                    <outlet property="name" destination="cEg-pe-qTS" id="jHs-lt-ZHf"/>
                                     <segue destination="BhX-sX-VpS" kind="show" identifier="PhotosFriend" id="LLi-et-yTt"/>
                                 </connections>
                             </tableViewCell>
@@ -265,7 +257,7 @@
                                                 <constraint firstAttribute="height" constant="147" id="K5q-Xa-Lgi"/>
                                             </constraints>
                                         </imageView>
-                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wjm-NX-CqV" customClass="likeControl" customModule="ForVK" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjm-NX-CqV" customClass="likeControl" customModule="ForVK" customModuleProvider="target">
                                             <rect key="frame" x="88" y="133" width="50" height="20"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <userDefinedRuntimeAttributes>

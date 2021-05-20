@@ -33,8 +33,39 @@ extension LoginFormController: WKNavigationDelegate {
             session.userId = String(params["user_id"]!)
             
             decisionHandler(.cancel)
-            performSegue(withIdentifier: "successLogin", sender: self)
+        
+//            performSegue(withIdentifier: "successLogin", sender: self)
+        let tabBarController = createTabController()
+        tabBarController.modalPresentationStyle = .fullScreen 
+        self.present(tabBarController, animated: true, completion: nil)
+      
+        
 
     }
     
+    func createTabController() -> UITabBarController{
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = setupControllers()
+        
+        return tabBarController
+    }
+    
+    func setupControllers() -> [UINavigationController] {
+        return [
+            createNavController(for: FriendsController(), title: "Друзья", image: UIImage.init(systemName: "person")!)
+        ]
+    }
+    
+    func createNavController(for rootController: UIViewController,
+                             title: String,
+                             image: UIImage) -> UINavigationController{
+        
+        let navController = UINavigationController(rootViewController: rootController)
+        navController.tabBarItem.title = title
+        navController.tabBarItem.image = image
+//        navController.navigationBar.prefersLargeTitles = true
+        rootController.navigationItem.title = title
+        return navController
+        
+    }
 }

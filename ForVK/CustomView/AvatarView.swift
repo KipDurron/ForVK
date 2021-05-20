@@ -8,27 +8,27 @@
 
 import UIKit
 
-@IBDesignable class AvatarView: UIView {
+class AvatarView: UIView {
     
-   @IBInspectable var shadowRadius: CGFloat = 1 {
+   var shadowRadius: CGFloat = 1 {
         didSet {
             updateShadow()
         }
     }
     
-   @IBInspectable var shadowColor: UIColor = .black {
+   var shadowColor: UIColor = .black {
         didSet {
             updateShadow()
         }
     }
     
-    @IBInspectable var shadowOpacity: Float = 1 {
+    var shadowOpacity: Float = 1 {
         didSet {
             updateShadow()
         }
     }
     
-    @IBInspectable var avatarImage: UIImage? = nil {
+    var avatarImage: UIImage? = nil {
         didSet {
             imageView.image = avatarImage
         }
@@ -48,11 +48,17 @@ import UIKit
         return view
     }()
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero)
         print(#function)
         setup()
     }
+    
+//    public  override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        print(#function)
+//        setup()
+//    }
 
     public required init?(coder: NSCoder) {
         super.init(coder: coder)

@@ -11,6 +11,7 @@ import RealmSwift
 
 class FriendsController: UITableViewController, UISearchResultsUpdating{
 
+    let cellId = "FriendsCell"
     var allFriend: Results<RUser>?
     var token: NotificationToken?
     var searchController: UISearchController!
@@ -22,6 +23,8 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(FriendsCell.self, forCellReuseIdentifier: cellId)
+        
         searchController = UISearchController(searchResultsController: nil)
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchResultsUpdater = self
@@ -117,13 +120,22 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
             cell.avatarView.avatarImage = image
         }
         
-        cell.name?.text = currentFriend.name
+        cell.name.text = currentFriend.name
         // Configure the cell...
 
         return cell
     }
     
 
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedTrail = trails[indexPath.row]
+        
+        if let viewController = storyboard?.instantiateViewController(identifier: "TrailViewController") as? TrailViewController {
+            viewController.trail = selectedTrail
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -34,6 +34,7 @@
 		EC75C1C22520CB4F00E59611 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC75C1C12520CB4F00E59611 /* Setting.swift */; };
 		EC88E09925370A9400A6F609 /* RealmSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC88E09825370A9400A6F609 /* RealmSetting.swift */; };
 		EC9C6890252CC9890013AA68 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9C688F252CC9890013AA68 /* Photo.swift */; };
+		ECA4C9BE2652CA64004FA05F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA4C9BD2652CA64004FA05F /* ViewController.swift */; };
 		ECA6D8952555A06D00B09BB7 /* SourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA6D8942555A06D00B09BB7 /* SourseData.swift */; };
 		ECB32F6D2552DDA50084CE57 /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB32F6C2552DDA50084CE57 /* NewsService.swift */; };
 		ECB56A9E25518F99005F7548 /* NewsPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB56A9D25518F99005F7548 /* NewsPostCell.swift */; };
@@ -98,6 +99,7 @@
 		EC75C1C12520CB4F00E59611 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		EC88E09825370A9400A6F609 /* RealmSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSetting.swift; sourceTree = "<group>"; };
 		EC9C688F252CC9890013AA68 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		ECA4C9BD2652CA64004FA05F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ECA6D8942555A06D00B09BB7 /* SourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourseData.swift; sourceTree = "<group>"; };
 		ECB32F6C2552DDA50084CE57 /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
 		ECB56A9D25518F99005F7548 /* NewsPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPostCell.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				EC28D8902499105E0027AB6C /* Info.plist */,
 				EC75C1C12520CB4F00E59611 /* Setting.swift */,
 				EC71DB042529E35D00937F03 /* CoreDataModel.xcdatamodeld */,
+				ECA4C9BD2652CA64004FA05F /* ViewController.swift */,
 			);
 			path = ForVK;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				TargetAttributes = {
 					EC28D87E2499105D0027AB6C = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -521,6 +525,7 @@
 				ECBA00E625220EBE00F24F3A /* FriendService.swift in Sources */,
 				EC71DB0A2529E39300937F03 /* CoreData.swift in Sources */,
 				ECB56AA125519172005F7548 /* PhotoNews.swift in Sources */,
+				ECA4C9BE2652CA64004FA05F /* ViewController.swift in Sources */,
 				EC4ED84C24A24C59003BE15A /* AvatarView.swift in Sources */,
 				EC9C6890252CC9890013AA68 /* Photo.swift in Sources */,
 				EC71DB3A2529EA6B00937F03 /* Photo+CoreDataProperties.swift in Sources */,
@@ -711,6 +716,7 @@
 			baseConfigurationReference = DDC23DA8AEA73C00F3B47992 /* Pods-ForVK.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R95MV6BG28;
 				INFOPLIST_FILE = ForVK/Info.plist;
@@ -720,6 +726,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = test.ForVK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -730,6 +737,7 @@
 			baseConfigurationReference = 1D12C431EE7845A9249090A6 /* Pods-ForVK.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R95MV6BG28;
 				INFOPLIST_FILE = ForVK/Info.plist;

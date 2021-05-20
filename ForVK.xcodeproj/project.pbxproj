@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		EC0B93692527157900DFB162 /* VKParsingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0B93682527157900DFB162 /* VKParsingHelper.swift */; };
-		EC23F5FF24A8A7A9000E1DDF /* likeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC23F5FE24A8A7A9000E1DDF /* likeControl.swift */; };
 		EC28D8832499105D0027AB6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC28D8822499105D0027AB6C /* AppDelegate.swift */; };
 		EC28D8872499105D0027AB6C /* LoginFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC28D8862499105D0027AB6C /* LoginFormController.swift */; };
 		EC28D88A2499105D0027AB6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC28D8882499105D0027AB6C /* Main.storyboard */; };
@@ -40,6 +39,8 @@
 		ECB56A9E25518F99005F7548 /* NewsPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB56A9D25518F99005F7548 /* NewsPostCell.swift */; };
 		ECB56AA125519172005F7548 /* PhotoNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB56AA025519172005F7548 /* PhotoNews.swift */; };
 		ECB56AA425519529005F7548 /* PostNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB56AA325519529005F7548 /* PostNews.swift */; };
+		ECB5C7AE265651EC00E9651E /* LikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB5C7AD265651EB00E9651E /* LikeControl.swift */; };
+		ECB5C7B02656800100E9651E /* PhotoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB5C7AF2656800100E9651E /* PhotoCollectionView.swift */; };
 		ECB63A2525332C6A00C4A742 /* RUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB63A2425332C6A00C4A742 /* RUser.swift */; };
 		ECB63A282533351500C4A742 /* RUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB63A272533351500C4A742 /* RUserService.swift */; };
 		ECB63A2B2533353900C4A742 /* DBServiceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB63A2A2533353900C4A742 /* DBServiceInterface.swift */; };
@@ -71,7 +72,6 @@
 		834E0BB8312F6A91C5641554 /* Pods_ForVK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForVK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDC23DA8AEA73C00F3B47992 /* Pods-ForVK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForVK.debug.xcconfig"; path = "Target Support Files/Pods-ForVK/Pods-ForVK.debug.xcconfig"; sourceTree = "<group>"; };
 		EC0B93682527157900DFB162 /* VKParsingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKParsingHelper.swift; sourceTree = "<group>"; };
-		EC23F5FE24A8A7A9000E1DDF /* likeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = likeControl.swift; sourceTree = "<group>"; };
 		EC28D87F2499105D0027AB6C /* ForVK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForVK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC28D8822499105D0027AB6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC28D8862499105D0027AB6C /* LoginFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormController.swift; sourceTree = "<group>"; };
@@ -105,6 +105,8 @@
 		ECB56A9D25518F99005F7548 /* NewsPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPostCell.swift; sourceTree = "<group>"; };
 		ECB56AA025519172005F7548 /* PhotoNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoNews.swift; sourceTree = "<group>"; };
 		ECB56AA325519529005F7548 /* PostNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNews.swift; sourceTree = "<group>"; };
+		ECB5C7AD265651EB00E9651E /* LikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeControl.swift; sourceTree = "<group>"; };
+		ECB5C7AF2656800100E9651E /* PhotoCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionView.swift; sourceTree = "<group>"; };
 		ECB63A2425332C6A00C4A742 /* RUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUser.swift; sourceTree = "<group>"; };
 		ECB63A272533351500C4A742 /* RUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUserService.swift; sourceTree = "<group>"; };
 		ECB63A2A2533353900C4A742 /* DBServiceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBServiceInterface.swift; sourceTree = "<group>"; };
@@ -225,7 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				EC4ED84B24A24C59003BE15A /* AvatarView.swift */,
-				EC23F5FE24A8A7A9000E1DDF /* likeControl.swift */,
+				ECB5C7AD265651EB00E9651E /* LikeControl.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -386,6 +388,7 @@
 				ECBA00EA2522100900F24F3A /* PhotoService.swift */,
 				ECEAFBEA249E92800080775A /* PhotosController.swift */,
 				ECEAFBEC249E92B00080775A /* PhotosCell.swift */,
+				ECB5C7AF2656800100E9651E /* PhotoCollectionView.swift */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				EC71DB062529E35D00937F03 /* CoreDataModel.xcdatamodeld in Sources */,
 				ECEAFBEB249E92800080775A /* PhotosController.swift in Sources */,
 				ECB63A2B2533353900C4A742 /* DBServiceInterface.swift in Sources */,
+				ECB5C7B02656800100E9651E /* PhotoCollectionView.swift in Sources */,
 				ECBA00E625220EBE00F24F3A /* FriendService.swift in Sources */,
 				EC71DB0A2529E39300937F03 /* CoreData.swift in Sources */,
 				ECB56AA125519172005F7548 /* PhotoNews.swift in Sources */,
@@ -539,7 +543,6 @@
 				ECB32F6D2552DDA50084CE57 /* NewsService.swift in Sources */,
 				ECB56AA425519529005F7548 /* PostNews.swift in Sources */,
 				EC75C1C22520CB4F00E59611 /* Setting.swift in Sources */,
-				EC23F5FF24A8A7A9000E1DDF /* likeControl.swift in Sources */,
 				ECB63A2525332C6A00C4A742 /* RUser.swift in Sources */,
 				ECBA00EF252210C400F24F3A /* GroupService.swift in Sources */,
 				ECB63A282533351500C4A742 /* RUserService.swift in Sources */,
@@ -569,6 +572,7 @@
 				EC5A5791249EA21F00DB032E /* GroupsCell.swift in Sources */,
 				ECBA00E22522080100F24F3A /* LoginService.swift in Sources */,
 				ECE49ED1251603B40023FB2F /* News.swift in Sources */,
+				ECB5C7AE265651EC00E9651E /* LikeControl.swift in Sources */,
 				EC5A578F249EA1C900DB032E /* UserGroupsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -60,25 +60,6 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
         }
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.destination is PhotosController
-        {
-            let photosController = segue.destination as? PhotosController
-            // Получаем индекс выделенной ячейки
-                if let indexPath = self.tableView.indexPathForSelectedRow {
-                    guard (self.allFriend != nil) else {
-                        return
-                    }
-                    let userId = self.allFriend![indexPath.row].id ?? "0"
-                    photoService.getAllphotoUser(idUser: userId) { allPhoto in
-                        self.dbPhotoService.saveAll(vkObjectList: allPhoto)
-                        photosController?.photos = self.dbPhotoService.loadResultByUser(userId: userId)
-                        photosController?.setToken()
-                        }
-                    }
-        }
-    }
     
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text {
@@ -129,12 +110,17 @@ class FriendsController: UITableViewController, UISearchResultsUpdating{
 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedTrail = trails[indexPath.row]
-        
-        if let viewController = storyboard?.instantiateViewController(identifier: "TrailViewController") as? TrailViewController {
-            viewController.trail = selectedTrail
-            navigationController?.pushViewController(viewController, animated: true)
+        guard (self.allFriend != nil) else {
+            return
         }
+        let photosController = PhotosController()
+        let userId = self.allFriend![indexPath.row].id ?? "0"
+        photoService.getAllphotoUser(idUser: userId) { allPhoto in
+            self.dbPhotoService.saveAll(vkObjectList: allPhoto)
+            photosController.photos = self.dbPhotoService.loadResultByUser(userId: userId)
+            photosController.setToken()
+            }
+        self.navigationController?.pushViewController(photosController, animated: true)
     }
     
     // Override to support conditional editing of the table view.

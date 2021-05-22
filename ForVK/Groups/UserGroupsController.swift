@@ -11,6 +11,8 @@ import RealmSwift
 
 class UserGroupsController: UITableViewController {
     
+    let cellId = "GroupsCell"
+    
     var dbGroupService = RGroupService()
     var userGroups: Results<RGroup>?
     var groupService = GroupService()
@@ -18,6 +20,8 @@ class UserGroupsController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.register(GroupsCell.self, forCellReuseIdentifier: cellId)
+        self.title = "Группы"
         groupService.getGroupUser(idUser: Session.instance.userId){userGroups in
             self.dbGroupService.saveAll(vkObjectList: userGroups)
             self.userGroups = self.dbGroupService.loadResult()
@@ -84,7 +88,7 @@ class UserGroupsController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupsCell", for: indexPath) as! GroupsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! GroupsCell
         let currentGroup = self.userGroups![indexPath.row]
         cell.name.text = currentGroup.name
         UIImage.load(from: currentGroup.avatarUrl) {image in
@@ -97,6 +101,9 @@ class UserGroupsController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
 
     /*
     // Override to support conditional editing of the table view.

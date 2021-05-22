@@ -52,7 +52,8 @@ extension LoginFormController: WKNavigationDelegate {
     
     func setupControllers() -> [UINavigationController] {
         return [
-            createNavController(for: FriendsController(), title: "Друзья", image: UIImage.init(systemName: "person")!)
+            createNavController(for: FriendsController(), title: "Друзья", image: UIImage.init(systemName: "person.2")!),
+            createNavController(for: UserGroupsController(), title: "Группы", image: UIImage.init(systemName: "person.3")!),
         ]
     }
     

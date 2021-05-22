@@ -28,7 +28,7 @@ class FriendsCell: UITableViewCell {
         NSLayoutConstraint.activate([
             avatarView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
             avatarView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            avatarView.trailingAnchor.constraint(equalTo: name.leadingAnchor, constant: -50),
+            avatarView.trailingAnchor.constraint(equalTo: name.leadingAnchor, constant: -20),
             avatarView.widthAnchor.constraint(equalToConstant: 50),
             avatarView.heightAnchor.constraint(equalToConstant: 50),
             avatarView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),

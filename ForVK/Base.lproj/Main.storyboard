@@ -323,7 +323,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupsCell" rowHeight="68" id="prk-8V-2Hy" customClass="GroupsCell" customModule="ForVK" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupsCell" rowHeight="68" id="prk-8V-2Hy">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="prk-8V-2Hy" id="vDG-xq-ajs">
@@ -356,10 +356,6 @@
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AHC-t3-aCR" secondAttribute="trailing" constant="20" symbolic="YES" id="tkY-o4-Xka"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="avatar" destination="UQ5-OH-2sA" id="48u-IX-Xo2"/>
-                                    <outlet property="name" destination="AHC-t3-aCR" id="cXy-7A-qBf"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -422,8 +418,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="avatar" destination="pX4-RU-Ctl" id="2B9-B6-tPg"/>
-                                    <outlet property="name" destination="aMs-Ps-5MR" id="SPh-7Z-ene"/>
                                     <segue destination="8Ns-jV-p8B" kind="unwind" identifier="addGroup" unwindAction="addGroupWithSegue:" id="iW6-be-vg2"/>
                                 </connections>
                             </tableViewCell>

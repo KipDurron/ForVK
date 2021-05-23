@@ -54,6 +54,8 @@ extension LoginFormController: WKNavigationDelegate {
         return [
             createNavController(for: FriendsController(), title: "Друзья", image: UIImage.init(systemName: "person.2")!),
             createNavController(for: UserGroupsController(), title: "Группы", image: UIImage.init(systemName: "person.3")!),
+            createNavController(for: NewsViewController(), title: "Новости", image: UIImage.init(systemName: "homekit")!),
+            
         ]
     }
     
@@ -64,7 +66,6 @@ extension LoginFormController: WKNavigationDelegate {
         let navController = UINavigationController(rootViewController: rootController)
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
-//        navController.navigationBar.prefersLargeTitles = true
         rootController.navigationItem.title = title
         return navController
         

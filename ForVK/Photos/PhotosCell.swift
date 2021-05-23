@@ -40,7 +40,7 @@ class PhotosCell: UICollectionViewCell {
 
             likeControl.trailingAnchor.constraint(equalTo: photo.trailingAnchor),
             likeControl.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            likeControl.heightAnchor.constraint(equalToConstant: 30),
+            likeControl.heightAnchor.constraint(equalToConstant: 20),
         ])
     
     }

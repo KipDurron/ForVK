@@ -20,6 +20,7 @@
 		EC5A578F249EA1C900DB032E /* UserGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5A578E249EA1C900DB032E /* UserGroupsController.swift */; };
 		EC5A5791249EA21F00DB032E /* GroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5A5790249EA21F00DB032E /* GroupsCell.swift */; };
 		EC5A5793249EA4A600DB032E /* AllGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5A5792249EA4A600DB032E /* AllGroupController.swift */; };
+		EC5CD3FD265A6CC4006D649B /* ExUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5CD3FC265A6CC4006D649B /* ExUITextView.swift */; };
 		EC71DB062529E35D00937F03 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC71DB042529E35D00937F03 /* CoreDataModel.xcdatamodeld */; };
 		EC71DB0A2529E39300937F03 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC71DB092529E39300937F03 /* CoreData.swift */; };
 		EC71DB352529EA6B00937F03 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC71DB2F2529EA6B00937F03 /* User+CoreDataClass.swift */; };
@@ -31,6 +32,7 @@
 		EC71DB3E2529F15100937F03 /* CDUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC71DB3D2529F15100937F03 /* CDUserService.swift */; };
 		EC71DB41252A16F200937F03 /* CDGroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC71DB40252A16F200937F03 /* CDGroupService.swift */; };
 		EC75C1C22520CB4F00E59611 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC75C1C12520CB4F00E59611 /* Setting.swift */; };
+		EC7B7B0F26597314001BD524 /* NewsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7B7B0E26597313001BD524 /* NewsHeader.swift */; };
 		EC88E09925370A9400A6F609 /* RealmSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC88E09825370A9400A6F609 /* RealmSetting.swift */; };
 		EC9C6890252CC9890013AA68 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9C688F252CC9890013AA68 /* Photo.swift */; };
 		ECA4C9BE2652CA64004FA05F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA4C9BD2652CA64004FA05F /* ViewController.swift */; };
@@ -86,6 +88,7 @@
 		EC5A578E249EA1C900DB032E /* UserGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupsController.swift; sourceTree = "<group>"; };
 		EC5A5790249EA21F00DB032E /* GroupsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsCell.swift; sourceTree = "<group>"; };
 		EC5A5792249EA4A600DB032E /* AllGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupController.swift; sourceTree = "<group>"; };
+		EC5CD3FC265A6CC4006D649B /* ExUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExUITextView.swift; sourceTree = "<group>"; };
 		EC71DB052529E35D00937F03 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		EC71DB092529E39300937F03 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		EC71DB2F2529EA6B00937F03 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -97,6 +100,7 @@
 		EC71DB3D2529F15100937F03 /* CDUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDUserService.swift; sourceTree = "<group>"; };
 		EC71DB40252A16F200937F03 /* CDGroupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDGroupService.swift; sourceTree = "<group>"; };
 		EC75C1C12520CB4F00E59611 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		EC7B7B0E26597313001BD524 /* NewsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeader.swift; sourceTree = "<group>"; };
 		EC88E09825370A9400A6F609 /* RealmSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSetting.swift; sourceTree = "<group>"; };
 		EC9C688F252CC9890013AA68 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		ECA4C9BD2652CA64004FA05F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 			children = (
 				EC36FB442520AD27003397CD /* ExLoginViewController.swift */,
 				ECD3461E2524C8CE0080259C /* ExUIImage.swift */,
+				EC5CD3FC265A6CC4006D649B /* ExUITextView.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 				ECE49EDB251624C50023FB2F /* NewsPhotoCell.swift */,
 				ECB56A9D25518F99005F7548 /* NewsPostCell.swift */,
 				ECB32F6C2552DDA50084CE57 /* NewsService.swift */,
+				EC7B7B0E26597313001BD524 /* NewsHeader.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -528,6 +534,7 @@
 				ECB5C7B02656800100E9651E /* PhotoCollectionView.swift in Sources */,
 				ECBA00E625220EBE00F24F3A /* FriendService.swift in Sources */,
 				EC71DB0A2529E39300937F03 /* CoreData.swift in Sources */,
+				EC5CD3FD265A6CC4006D649B /* ExUITextView.swift in Sources */,
 				ECB56AA125519172005F7548 /* PhotoNews.swift in Sources */,
 				ECA4C9BE2652CA64004FA05F /* ViewController.swift in Sources */,
 				EC4ED84C24A24C59003BE15A /* AvatarView.swift in Sources */,
@@ -574,6 +581,7 @@
 				ECE49ED1251603B40023FB2F /* News.swift in Sources */,
 				ECB5C7AE265651EC00E9651E /* LikeControl.swift in Sources */,
 				EC5A578F249EA1C900DB032E /* UserGroupsController.swift in Sources */,
+				EC7B7B0F26597314001BD524 /* NewsHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

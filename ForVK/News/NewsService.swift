@@ -69,6 +69,10 @@ class NewsService {
             if type == "photo" {
                 self.listNews.append(PhotoNews(newsJson: news))
                 }
+            if type == "wall_photo" {
+                self.listNews.append(PhotoNews(newsJson: news))
+                }
+            
         }
         dispatchGroup.leave()
     }

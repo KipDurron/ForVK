@@ -494,8 +494,8 @@
                                 <connections>
                                     <outlet property="avatarAuthor" destination="r1f-IP-Ffg" id="tki-Pd-Jig"/>
                                     <outlet property="date" destination="0dC-Qp-vD1" id="6fh-Ru-aIc"/>
-                                    <outlet property="img" destination="DQ0-J4-VFS" id="fHu-tq-gHr"/>
                                     <outlet property="nameAuthor" destination="f3P-jM-CTT" id="VLX-56-gpm"/>
+                                    <outlet property="photo" destination="DQ0-J4-VFS" id="fHu-tq-gHr"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsPostCell" rowHeight="311" id="s0P-pO-Kao" customClass="NewsPostCell" customModule="ForVK" customModuleProvider="target">

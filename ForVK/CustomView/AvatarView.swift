@@ -50,7 +50,6 @@ class AvatarView: UIView {
     
     init() {
         super.init(frame: .zero)
-        print(#function)
         setup()
     }
     
@@ -62,7 +61,6 @@ class AvatarView: UIView {
 
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        print(#function)
         setup()
     }
     

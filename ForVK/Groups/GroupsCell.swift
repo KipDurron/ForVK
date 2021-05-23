@@ -42,7 +42,7 @@ class GroupsCell: UITableViewCell {
 
             name.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 20),
             name.bottomAnchor.constraint(equalTo: avatar.bottomAnchor),
-            name.heightAnchor.constraint(equalToConstant: 30),
+            name.heightAnchor.constraint(equalToConstant: 20),
         ])
     
     }

@@ -10,6 +10,9 @@ import UIKit
 
 class NewsViewController: UITableViewController {
 
+    let newsPhotoCellId = "NewsPhotoCell"
+    let newsPostCellId = "NewsPostCell"
+    
     var news: [News] = []
     var newsService = NewsService()
     
@@ -21,6 +24,12 @@ class NewsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Новости"
+        self.tableView.dataSource = self
+        self.tableView.estimatedRowHeight = 44.0
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.register(NewsPostCell.self, forCellReuseIdentifier: newsPostCellId)
+        self.tableView.register(NewsPhotoCell.self, forCellReuseIdentifier: newsPhotoCellId)
         newsService.getNews() {news in
             self.news = news
             self.tableView.reloadData()
@@ -42,61 +51,25 @@ class NewsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currentCell = news[indexPath.row]
-        if currentCell.type == "photo" {
-         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsPhotoCell", for: indexPath) as! NewsPhotoCell
+        if currentCell.type == "photo" || currentCell.type == "wall_photo" {
+         let cell = tableView.dequeueReusableCell(withIdentifier: newsPhotoCellId, for: indexPath) as! NewsPhotoCell
             cell.configure(item: currentCell as! PhotoNews, dateFormatter: dateFormatter)
             return cell
         } else {
-           let cell = tableView.dequeueReusableCell(withIdentifier: "NewsPostCell", for: indexPath) as! NewsPostCell
+           let cell = tableView.dequeueReusableCell(withIdentifier: newsPostCellId, for: indexPath) as! NewsPostCell
             cell.configure(item: currentCell as! PostNews, dateFormatter: dateFormatter)
             return cell
         }
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+////        let currentCell = news[indexPath.row]
+////        if currentCell.type == "photo" || currentCell.type == "wall_photo"{
+////            return 510;
+////        } else {
+////            return 320
+////        }
+//        return self.view.bounds.size.width / 1.2
+//    }
 
 }
